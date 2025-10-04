@@ -1,47 +1,82 @@
-# Stellar Stories - Interactive Space Weather Adventure
+# 🌌 Stellar Stories – NASA Space Apps Challenge 2025
 
-An educational, interactive story about space weather, solar flares, and how the Sun affects Earth. Perfect for learners of all ages!
+Welcome to the official repository of **Mindcraft Seniors** for the **NASA Space Apps Challenge 2025**!  
+Our challenge: **Stellar Stories: Space Weather Through the Eyes of Earthlings** 🌍✨
 
-## ✨ Recent Improvements
+---
 
-### 🎨 Enhanced User Interface
+## 👥 Team: Mindcraft Seniors
+
+We are a group of passionate innovators who love science, technology, and creativity.  
+Our goal is to build solutions that make space knowledge accessible and inspiring for everyone.
+
+### 🧑‍🚀 Team Members
+- **[Farah El Ghemary]** – team owner
+- **[Salma Yaakoubi]** – graphic designer
+- **[Mariam Hamraoui]** – management 
+- **[Walid Ben Slimane]** – developer  
+- **[Rayane Ghacha]** – documentation and research 
+- **[Mohammed Mebarki]** – developer 
+
+---
+
+## 🚀 About the Challenge
+
+**Stellar Stories** is about exploring how space weather impacts our daily lives and telling those stories in creative ways.  
+We aim to transform complex space science into **engaging stories, visuals, and interactive tools** for the public.
+
+### 🔭 Our Vision
+- Bring awareness about **space weather** and its impact on Earth.  
+- Create **educational content** that is simple, fun, and inspiring.  
+- Use **technology + storytelling** to connect people with space science.  
+
+---
+
+## 🛠️ Project Overview
+
+### 📌 Project Title: *[Stellar Stories]*  
+### 🌟 Short Description:  
+An interactive educational journey to learn about space weather, solar flares, and how the Sun affects Earth. Perfect for learners of all ages!
+
+---
+
+## 🏆 Our Goals
+- ✅ Understand the effects of **space weather**  
+- ✅ Share **stories & visuals** that inspire  
+- ✅ Create a **working prototype/demo** for the challenge  
+
+---
+
+## 🎮 Interactive Features
 
 - **Progress Indicator**: Track your journey through all 20 scenes
 - **Responsive Design**: Works perfectly on desktop, tablet, and mobile devices
 - **Smooth Animations**: Beautiful character animations and scene transitions
-- **Professional Styling**: Modern gradient backgrounds and polished UI elements
-
-### 🎮 Interactive Features
-
 - **Clickable Characters**: Click on characters for special visual effects
 - **Educational Popups**: Glossary terms and fun facts throughout the story
 - **Keyboard Navigation**: Use arrow keys, spacebar, Home, and End to navigate
-- **Fullscreen Mode**: Press Ctrl+F or click the fullscreen button for immersive experience
+- **Fullscreen Mode**: Press Ctrl+F or click the fullscreen button for an immersive experience
 
-### 🔊 Audio Controls
+---
+
+## 🔊 Audio Controls
 
 - **Background Music Toggle**: Mute/unmute background music
 - **Narration Control**: Toggle scene narration on/off
 - **Smart Audio Handling**: Graceful fallbacks when audio files are missing
 
-### 📚 Educational Content
+---
+
+## 📚 Educational Content
 
 - **Interactive Glossary**: Click on highlighted terms to learn more
 - **Fun Facts**: Discover amazing space weather facts
 - **Diverse Characters**: Meet Earth, astronauts, pilots, farmers, and more
 - **Complete Story Arc**: 20 unique scenes with meaningful content
 
-### 📱 Accessibility & Usability
+---
 
-- **Mobile-Friendly**: Touch-friendly controls and responsive text sizing
-- **Keyboard Accessible**: Full keyboard navigation support
-- **Screen Reader Ready**: Proper ARIA labels and alt text
-- **Reduced Motion**: Respects user preferences for reduced motion
-- **Focus Indicators**: Clear visual focus indicators for keyboard users
-
-### 🎯 Unique Scenes
-
-Each scene now has unique, educational content:
+## 🎯 Unique Scenes
 
 - **Scenes 1-12**: Introduction to Solara the Sun and space weather basics
 - **Scene 13**: Meet Earth and learn about magnetic fields and auroras
@@ -53,6 +88,8 @@ Each scene now has unique, educational content:
 - **Scene 19**: Meet young space weather scientists
 - **Scene 20**: Completion ceremony with certificate of achievement
 
+---
+
 ## 🚀 How to Use
 
 1. **Start the Adventure**: Click the "Start" button on the first scene
@@ -61,6 +98,8 @@ Each scene now has unique, educational content:
 4. **Learn**: Read the educational content and explore the interactive elements
 5. **Control Audio**: Use the sound buttons in the top-right corner
 6. **Go Full Screen**: Click the fullscreen button or press Ctrl+F
+
+---
 
 ## 🎯 Educational Goals
 
@@ -73,6 +112,8 @@ Students will learn about:
 - Aurora formation and space weather impacts
 - Real-world applications of space weather science
 
+---
+
 ## 🔧 Technical Features
 
 - **Vanilla JavaScript**: No dependencies, fast loading
@@ -82,6 +123,8 @@ Students will learn about:
 - **Error Handling**: Graceful fallbacks for missing audio files
 - **Performance Optimized**: Efficient DOM manipulation and smooth animations
 
+---
+
 ## 📱 Browser Compatibility
 
 - ✅ Chrome 60+
@@ -90,12 +133,16 @@ Students will learn about:
 - ✅ Edge 79+
 - ✅ Mobile browsers (iOS Safari, Chrome Mobile)
 
+---
+
 ## 🎨 Assets Used
 
 - Character illustrations in the `Characters/` folder
 - Background images in the `Background_Images/` folder
 - Audio narration files in the `Audios/` folder
 - Background music in the `Background_Music/` folder
+
+---
 
 ## 🔮 Future Enhancement Ideas
 
@@ -105,6 +152,18 @@ Students will learn about:
 - Additional language support
 - Achievement system and badges
 - Social sharing of completion certificates
+
+---
+
+## 📬 Contact
+
+For any questions, reach out to us:  
+📧 Email: [info@mindcraft.ma]  
+🌍 GitHub: [https://github.com/mindcraftlabs]  
+
+---
+
+### ✨ “The sky is not the limit, it’s just the beginning.” – Mindcraft Seniors
 
 ---
 
