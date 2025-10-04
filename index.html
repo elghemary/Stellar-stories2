@@ -1,0 +1,1071 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Stellar Stories - An interactive space weather adventure for everyone! Learn about the Sun, Earth, and how space weather affects our daily lives through engaging storytelling."
+    />
+    <meta
+      name="keywords"
+      content="space weather, solar flares, sun, earth, aurora, educational game, NASA Space Apps, space science, interactive learning"
+    />
+    <meta name="author" content="Stellar Stories Team" />
+    <title>Stellar Stories - Space Weather Adventure</title>
+
+    <!-- Preload critical resources -->
+    <link rel="preload" href="CSS/style.css" as="style" />
+    <link rel="preload" href="JS/script.js" as="script" />
+    <link rel="preload" href="Images/Backgrounds/Background.png" as="image" />
+    <link
+      rel="preload"
+      href="Images/Characters/happy_sun-removebg-preview.png"
+      as="image"
+    />
+
+    <!-- External CSS -->
+    <link rel="stylesheet" href="CSS/style.css" />
+
+    <!-- Favicon -->
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>☀️</text></svg>"
+    />
+  </head>
+  <body>
+    <!-- Loading Screen -->
+    <div id="loading-screen">
+      <div class="loading-content">
+        <div class="sun-logo"></div>
+        <h1>Stellar Stories</h1>
+        <p>Space Weather Adventure</p>
+        <div class="loading-bar">
+          <div class="loading-progress" id="loading-progress"></div>
+        </div>
+        <p>Loading amazing journey...</p>
+      </div>
+    </div>
+
+    <!-- Main Story -->
+    <div class="story-container" id="story-container" style="display: none">
+      <!-- Navigation Header -->
+      <header class="nav-header">
+        <div class="nav-brand">
+          <span>☀️</span>
+          <span>Stellar Stories</span>
+        </div>
+        <div class="progress-container">
+          <div class="progress-track">
+            <div class="progress-fill" id="progress-fill"></div>
+          </div>
+          <span id="progress-text">Scene 1 of 18</span>
+        </div>
+        <div class="score-container">
+          <div class="score-display">
+            <span class="score-icon">⭐</span>
+            <span id="score-text">0</span>
+            <span class="score-label">Points</span>
+          </div>
+        </div>
+        <div style="display: flex; gap: 1rem; align-items: center">
+          <button
+            class="nav-btn"
+            onclick="showSettings()"
+            title="Settings"
+            style="width: 40px; height: 40px; font-size: 1rem"
+          >
+            ⚙️
+          </button>
+          <button
+            class="nav-btn"
+            onclick="showSummary()"
+            title="Summary"
+            style="width: 40px; height: 40px; font-size: 1rem"
+          >
+            📊
+          </button>
+          <button
+            class="nav-btn"
+            onclick="showAbout()"
+            title="About"
+            style="width: 40px; height: 40px; font-size: 1rem"
+          >
+            ℹ️
+          </button>
+          <div>🎵 <span id="audio-status">♪</span></div>
+        </div>
+      </header>
+
+      <!-- Story Stage -->
+      <main class="story-stage">
+        <div class="scenes-container" id="scenes-container">
+          <!-- Scene 1: Welcome -->
+          <section class="scene space" data-scene="1">
+            <div class="scene-content">
+              <h1 class="scene-title">Welcome to the Universe</h1>
+              <p style="font-size: 1.2rem; margin-bottom: 2rem">
+                Far away at the heart of our solar system, lives a star we all
+                know...
+              </p>
+              <button
+                class="nav-btn"
+                onclick="nextScene()"
+                style="width: auto; padding: 1rem 2rem; border-radius: 25px"
+              >
+                Begin Adventure ✨
+              </button>
+            </div>
+          </section>
+
+          <!-- Scene 2: Meet Solara -->
+          <section class="scene sun" data-scene="2">
+            <div class="scene-content">
+              <img
+                class="character sun"
+                src="Images/Characters/happy_sun-removebg-preview.png"
+                alt="Solara the Sun"
+                onclick="characterSpeak(this, 'Hello! I am Solara, your friendly neighborhood star! ☀️')"
+              />
+              <div class="speech-bubble">
+                <p><strong>"Hello! I'm Solara, the Sun! ☀️"</strong></p>
+                <p>
+                  The sun shines every day, but it's so much more than just
+                  light and warmth.
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <!-- Scene 3: Sun's Age -->
+          <section class="scene sun" data-scene="3">
+            <div class="scene-content">
+              <img
+                class="character sun"
+                src="Images/Characters/Sun_happy.png"
+                alt="Ancient Solara"
+                onclick="characterSpeak(this, 'I have seen the birth and death of countless worlds!')"
+              />
+              <div class="speech-bubble">
+                <p>
+                  <strong
+                    >"I've been shining for 4.6 billion years, keeping planets
+                    warm and bright!"</strong
+                  >
+                </p>
+              </div>
+              <div class="fun-fact">
+                <h3>🌟 Amazing Fact</h3>
+                <p>
+                  The Sun produces more energy in one second than humans have
+                  used in all of history!
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <!-- Scene 4: Sun's Moods -->
+          <section class="scene sun" data-scene="4">
+            <div class="scene-content">
+              <img
+                class="character sun"
+                id="mood-sun"
+                src="Images/Characters/happy_sun-removebg-preview.png"
+                alt="Moody Solara"
+              />
+              <div class="speech-bubble">
+                <p>
+                  <strong
+                    >"I have lots of energy and sometimes... different moods!
+                    Click to see!"</strong
+                  >
+                </p>
+              </div>
+              <div class="mood-selector">
+                <div class="mood-btn active" onclick="changeMood('happy')">
+                  😊 Happy
+                </div>
+                <div class="mood-btn" onclick="changeMood('stormy')">
+                  ⛈️ Stormy
+                </div>
+                <div class="mood-btn" onclick="changeMood('energetic')">
+                  🌟 Energetic
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Scene 5: Sunspots -->
+          <section class="scene sun" data-scene="5">
+            <div class="scene-content">
+              <img
+                class="character sun"
+                src="Images/Characters/happy_sun-removebg-preview.png"
+                alt="Spotted Solara"
+                onclick="showSunspotInfo()"
+              />
+              <div class="speech-bubble">
+                <p>
+                  <strong
+                    >"See these dark spots? They're called sunspots! Click me to
+                    learn more!"</strong
+                  >
+                </p>
+              </div>
+              <div class="fun-fact">
+                <h3>Sunspots</h3>
+                <p>
+                  Cool, dark areas on the Sun's surface that are about 3,000°F
+                  cooler than surrounding areas!
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <!-- Scene 6: Energy Building -->
+          <section class="scene sun" data-scene="6">
+            <div class="scene-content">
+              <img
+                class="character sun"
+                src="Images/Characters/happy_sun-removebg-preview.png"
+                alt="Energizing Solara"
+              />
+              <div class="speech-bubble">
+                <p>
+                  <strong
+                    >"They may look calm, but they mean I'm gearing up for a
+                    burst of energy!"</strong
+                  >
+                </p>
+              </div>
+              <div
+                style="
+                  display: flex;
+                  flex-direction: column;
+                  align-items: center;
+                "
+              >
+                <p>Energy Level:</p>
+                <div class="energy-meter">
+                  <div class="energy-fill building" id="energy-fill"></div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Scene 7: Solar Flare -->
+          <section class="scene sun" data-scene="7">
+            <div class="flare-effect" id="flare-effect"></div>
+            <div class="scene-content">
+              <img
+                class="character flare"
+                src="Images/Characters/sun_with_CMEs-removebg-preview.png"
+                alt="Flaring Solara"
+              />
+              <div class="speech-bubble warning">
+                <p>
+                  <strong
+                    >"AHCHOOOO! 💥 A solar flare is coming your way!"</strong
+                  >
+                </p>
+              </div>
+              <div class="fun-fact">
+                <h3>Solar Flares</h3>
+                <p>
+                  Massive explosions that release the energy of billions of
+                  atomic bombs!
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <!-- Scene 8: CME -->
+          <section class="scene sun" data-scene="8">
+            <div class="scene-content">
+              <img
+                class="character sun"
+                src="Images/Characters/sun_with_CMEs-removebg-preview.png"
+                alt="CME Solara"
+              />
+              <div class="speech-bubble">
+                <p>
+                  <strong
+                    >"Sometimes I blow big bubbles called CMEs - Coronal Mass
+                    Ejections!"</strong
+                  >
+                </p>
+              </div>
+              <div class="fun-fact">
+                <h3>Coronal Mass Ejections</h3>
+                <p>
+                  Massive bursts of solar wind and magnetic fields that travel
+                  through space at incredible speeds!
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <!-- Scene 9: Meet Earth -->
+          <section class="scene earth" data-scene="9">
+            <div class="scene-content">
+              <img
+                class="character"
+                src="Images/Characters/happy_earth-removebg-preview.png"
+                alt="Happy Earth"
+                onclick="characterSpeak(this, 'My magnetic field is like a superhero shield! 🛡️')"
+              />
+              <div class="speech-bubble">
+                <p>
+                  <strong
+                    >"Hi! I'm Earth! I have a special magnetic shield that
+                    protects me! 🛡️"</strong
+                  >
+                </p>
+              </div>
+              <div class="fun-fact">
+                <h3>🌍 Earth's Protection</h3>
+                <p>
+                  Earth's magnetic field extends 60,000 km into space and
+                  deflects most harmful solar particles!
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <!-- Scene 10: Auroras -->
+          <section class="scene earth" data-scene="10">
+            <div class="aurora" id="aurora"></div>
+            <div class="scene-content">
+              <img
+                class="character"
+                src="Images/Characters/happy_earth-removebg-preview.png"
+                alt="Aurora Earth"
+              />
+              <div class="speech-bubble">
+                <p>
+                  <strong
+                    >"When Solara's particles reach me, they create beautiful
+                    auroras! ✨"</strong
+                  >
+                </p>
+              </div>
+              <button
+                class="mood-btn"
+                onclick="changeAuroraColor()"
+                style="margin-top: 1rem"
+              >
+                Change Aurora Colors! 🌈
+              </button>
+            </div>
+          </section>
+
+          <!-- Scene 11: Space Weather Threats -->
+          <section class="scene earth" data-scene="11">
+            <div class="scene-content">
+              <img
+                class="character"
+                src="Images/Characters/scared_earth-removebg-preview.png"
+                alt="Worried Earth"
+              />
+              <div class="speech-bubble warning">
+                <p>
+                  <strong
+                    >"But strong solar storms can disrupt satellites and
+                    technology! ⚠️"</strong
+                  >
+                </p>
+              </div>
+              <div style="display: flex; gap: 2rem; margin-top: 2rem">
+                <div class="fun-fact" style="flex: 1">
+                  📡 Satellite Disruption
+                </div>
+                <div class="fun-fact" style="flex: 1">⚡ Power Grid Risk</div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Scene 12: Space Station -->
+          <section class="scene earth" data-scene="12">
+            <div class="scene-content">
+              <img
+                class="character"
+                src="Images/Characters/ISS_-removebg-preview.png"
+                alt="ISS"
+                style="animation: character-float 2s ease-in-out infinite"
+              />
+              <div class="speech-bubble">
+                <p>
+                  <strong
+                    >"I'm the ISS! We astronauts monitor space weather carefully
+                    up here! 🚀"</strong
+                  >
+                </p>
+              </div>
+              <div class="fun-fact">
+                <h3>International Space Station</h3>
+                <p>
+                  Orbits Earth every 90 minutes at 408 km altitude. Astronauts
+                  receive space weather alerts!
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <!-- Scene 13: Aviation -->
+          <section class="scene ground" data-scene="13">
+            <div class="scene-content">
+              <img
+                class="character"
+                src="Images/Characters/pilot-removebg-preview.png"
+                alt="Pilot"
+              />
+              <div class="speech-bubble">
+                <p>
+                  <strong
+                    >"As a pilot, space weather affects our GPS and radio
+                    communications! ✈️"</strong
+                  >
+                </p>
+              </div>
+              <div class="fun-fact">
+                <h3>Aviation Impact</h3>
+                <p>
+                  Polar flights are most affected. GPS accuracy can decrease
+                  during solar storms!
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <!-- Scene 14: Power Grid -->
+          <section class="scene ground" data-scene="14">
+            <div class="scene-content">
+              <img
+                class="character"
+                src="Images/Characters/power_gen-removebg-preview.png"
+                alt="Power Grid"
+                onclick="showPowerDemo()"
+              />
+              <div class="speech-bubble">
+                <p>
+                  <strong
+                    >"I'm a power grid! Solar storms can cause blackouts! Click
+                    to see how! ⚡"</strong
+                  >
+                </p>
+              </div>
+              <div class="fun-fact">
+                <h3>Power Grid Vulnerability</h3>
+                <p>
+                  The 1989 Quebec blackout affected 6 million people due to a
+                  geomagnetic storm!
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <!-- Scene 15: Agriculture -->
+          <section class="scene ground" data-scene="15">
+            <div class="scene-content">
+              <img
+                class="character"
+                src="Images/Characters/farmer-removebg-preview.png"
+                alt="Farmer"
+              />
+              <div class="speech-bubble">
+                <p>
+                  <strong
+                    >"Even farming uses GPS! Space weather affects precision
+                    agriculture! 🚜"</strong
+                  >
+                </p>
+              </div>
+              <div class="fun-fact">
+                <h3>Smart Farming</h3>
+                <p>
+                  GPS-guided farming increases crop yields by 15% and saves
+                  billions annually!
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <!-- Scene 16: Young Scientists -->
+          <section class="scene sun" data-scene="16">
+            <div class="scene-content">
+              <img
+                class="character"
+                src="Images/Characters/girl-removebg-preview.png"
+                alt="Scientist"
+                onclick="characterSpeak(this, 'Science is the key to understanding our universe! 🔬')"
+              />
+              <div class="speech-bubble">
+                <p>
+                  <strong
+                    >"Scientists like me study space weather to help everyone
+                    stay safe! 🔬⭐"</strong
+                  >
+                </p>
+              </div>
+              <div class="fun-fact">
+                <h3>Space Weather Science</h3>
+                <p>
+                  NOAA monitors space weather 24/7 using satellites and
+                  ground-based instruments!
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <!-- Scene 17: Global Network -->
+          <section class="scene earth" data-scene="17">
+            <div class="scene-content">
+              <div style="display: flex; gap: 2rem; margin-bottom: 2rem">
+                <img
+                  class="character"
+                  src="Images/Characters/sad_ASTR-removebg-preview.png"
+                  alt="Astronomer"
+                  style="width: 120px"
+                />
+                <img
+                  class="character"
+                  src="Images/Characters/sad_radio-removebg-preview.png"
+                  alt="Radio Operator"
+                  style="width: 120px"
+                />
+                <img
+                  class="character"
+                  src="Images/Characters/sad_phone-removebg-preview.png"
+                  alt="Communications"
+                  style="width: 120px"
+                />
+              </div>
+              <div class="speech-bubble">
+                <p>
+                  <strong
+                    >"Space weather monitoring is a global effort! 🌍"</strong
+                  >
+                </p>
+              </div>
+              <div class="fun-fact">
+                <h3>Global Collaboration</h3>
+                <p>
+                  Over 100 countries work together to monitor space weather and
+                  protect our technology!
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <!-- Scene 18: Completion -->
+          <section class="scene space celebration" data-scene="18">
+            <div class="fireworks" id="fireworks"></div>
+            <div class="scene-content">
+              <div class="certificate">
+                <h2>🎉 Congratulations! 🎉</h2>
+                <h3>🏆 Space Weather Explorer Certificate 🏆</h3>
+                <p>You have successfully completed your cosmic journey!</p>
+
+                <div class="achievements">
+                  <div class="achievement">☀️ Met Solara the Sun</div>
+                  <div class="achievement">
+                    🌍 Discovered Earth's Protection
+                  </div>
+                  <div class="achievement">
+                    🛰️ Learned About Technology Impact
+                  </div>
+                  <div class="achievement">
+                    🔬 Joined the Scientific Community
+                  </div>
+                </div>
+
+                <div
+                  style="
+                    margin-top: 2rem;
+                    display: flex;
+                    gap: 1rem;
+                    justify-content: center;
+                  "
+                >
+                  <button
+                    onclick="restartStory()"
+                    class="nav-btn"
+                    style="width: auto; padding: 1rem 2rem; border-radius: 25px"
+                  >
+                    New Adventure 🚀
+                  </button>
+                  <button
+                    onclick="shareStory()"
+                    class="nav-btn"
+                    style="width: auto; padding: 1rem 2rem; border-radius: 25px"
+                  >
+                    Share Story 🌟
+                  </button>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+      </main>
+
+      <!-- Navigation Controls -->
+      <div class="nav-controls">
+        <button class="nav-btn" onclick="previousScene()" id="prev-btn">
+          ⬅️
+        </button>
+        <button class="nav-btn" onclick="toggleAutoPlay()" id="play-btn">
+          ▶️
+        </button>
+        <button class="nav-btn" onclick="nextScene()" id="next-btn">➡️</button>
+      </div>
+    </div>
+
+    <!-- Settings Panel -->
+    <div id="settings-modal" class="modal-overlay">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2>⚙️ Settings</h2>
+          <button class="close-btn" onclick="hideSettings()">✕</button>
+        </div>
+
+        <div class="setting-group">
+          <label class="setting-label">🔊 Volume</label>
+          <div style="display: flex; align-items: center; gap: 1rem">
+            <input
+              type="range"
+              class="slider"
+              id="volume-slider"
+              min="0"
+              max="100"
+              value="70"
+              oninput="updateVolume(this.value)"
+            />
+            <span id="volume-display" style="color: #ffd700; font-weight: bold"
+              >70%</span
+            >
+          </div>
+        </div>
+
+        <div class="setting-group">
+          <label class="setting-label">⚡ Animation Speed</label>
+          <select
+            class="select"
+            id="animation-speed"
+            onchange="updateAnimationSpeed(this.value)"
+          >
+            <option value="0.5">Slow (0.5x)</option>
+            <option value="1" selected>Normal (1x)</option>
+            <option value="1.5">Fast (1.5x)</option>
+            <option value="2">Ultra Fast (2x)</option>
+          </select>
+        </div>
+
+        <div class="setting-group">
+          <label class="setting-label">🎵 Background Music</label>
+          <div class="toggle" id="music-toggle" onclick="toggleMusic()"></div>
+        </div>
+
+        <div class="setting-group">
+          <label class="setting-label">🔊 Scene Audio</label>
+          <div
+            class="toggle active"
+            id="audio-toggle"
+            onclick="toggleAudio()"
+          ></div>
+        </div>
+
+        <div class="setting-group">
+          <label class="setting-label">⏰ Auto-Advance Timer</label>
+          <select
+            class="select"
+            id="auto-timer"
+            onchange="updateAutoTimer(this.value)"
+          >
+            <option value="3">3 seconds</option>
+            <option value="5" selected>5 seconds</option>
+            <option value="8">8 seconds</option>
+            <option value="10">10 seconds</option>
+          </select>
+        </div>
+
+        <div
+          style="
+            margin-top: 2rem;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(255, 215, 0, 0.3);
+          "
+        >
+          <button
+            onclick="resetSettings()"
+            class="nav-btn"
+            style="
+              width: 100%;
+              padding: 1rem;
+              border-radius: 15px;
+              background: rgba(255, 69, 0, 0.3);
+              margin-bottom: 1rem;
+            "
+          >
+            🔄 Reset to Defaults
+          </button>
+          <button
+            onclick="resetScore()"
+            class="nav-btn"
+            style="
+              width: 100%;
+              padding: 1rem;
+              border-radius: 15px;
+              background: rgba(255, 140, 0, 0.3);
+            "
+          >
+            ⭐ Reset Score
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Summary Modal -->
+    <div id="summary-modal" class="modal-overlay">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2>📊 Journey Summary</h2>
+          <button class="close-btn" onclick="hideSummary()">✕</button>
+        </div>
+
+        <div class="stats-grid">
+          <div class="stat-card">
+            <span class="stat-number" id="current-scene-stat">1</span>
+            <span class="stat-label">Current Scene</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-number" id="completion-stat">5.6%</span>
+            <span class="stat-label">Completion</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-number" id="time-spent-stat">0:00</span>
+            <span class="stat-label">Time Spent</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-number" id="interactions-stat">0</span>
+            <span class="stat-label">Interactions</span>
+          </div>
+        </div>
+
+        <div class="progress-summary">
+          <h3 style="color: #ffd700; margin-bottom: 1rem">
+            📈 Progress Overview
+          </h3>
+          <p id="progress-description">
+            You've just begun your cosmic journey! Keep exploring to learn about
+            space weather.
+          </p>
+
+          <div class="scene-list" id="scene-progress-list">
+            <!-- Scene progress items will be populated by JavaScript -->
+          </div>
+        </div>
+
+        <div class="progress-summary">
+          <h3 style="color: #ffd700; margin-bottom: 1rem">🏆 Achievements</h3>
+          <div id="achievements-list">
+            <div class="scene-item" id="achievement-start">
+              🚀 Journey Started
+            </div>
+            <div class="scene-item" id="achievement-sun" style="opacity: 0.3">
+              ☀️ Met Solara
+            </div>
+            <div class="scene-item" id="achievement-earth" style="opacity: 0.3">
+              🌍 Earth's Shield
+            </div>
+            <div class="scene-item" id="achievement-flare" style="opacity: 0.3">
+              💥 Solar Flare
+            </div>
+            <div
+              class="scene-item"
+              id="achievement-aurora"
+              style="opacity: 0.3"
+            >
+              ✨ Aurora Magic
+            </div>
+            <div
+              class="scene-item"
+              id="achievement-complete"
+              style="opacity: 0.3"
+            >
+              🎉 Journey Complete
+            </div>
+          </div>
+        </div>
+
+        <div style="margin-top: 2rem; display: flex; gap: 1rem">
+          <button
+            onclick="exportProgress()"
+            class="nav-btn"
+            style="flex: 1; padding: 1rem; border-radius: 15px"
+          >
+            📥 Export Progress
+          </button>
+          <button
+            onclick="shareProgress()"
+            class="nav-btn"
+            style="flex: 1; padding: 1rem; border-radius: 15px"
+          >
+            📤 Share Progress
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- About Modal -->
+    <div id="about-modal" class="modal-overlay">
+      <div class="modal-content about-content">
+        <button class="modal-close" onclick="hideAbout()" id="close-about">
+          ×
+        </button>
+
+        <div class="about-header">
+          <h2>🚀 Stellar Stories Team</h2>
+          <p>Meet the amazing team behind your space weather adventure!</p>
+        </div>
+
+        <!-- Team Section -->
+        <div class="about-section">
+          <h3>👨‍🚀 Our Team</h3>
+          <div class="team-grid">
+            <div class="team-member">
+              <div class="member-photo">👩‍💼</div>
+              <div class="member-name">Farah El Ghemary</div>
+              <div class="member-role">Team Owner</div>
+              <div class="member-bio">
+                Leading the Stellar Stories project with vision and passion for
+                space education.
+              </div>
+            </div>
+
+            <div class="team-member">
+              <div class="member-photo">👩‍💻</div>
+              <div class="member-name">Mariam Hamraoui</div>
+              <div class="member-role">Management</div>
+              <div class="member-bio">
+                Coordinating project development and ensuring quality delivery
+                of educational content.
+              </div>
+            </div>
+
+            <div class="team-member">
+              <div class="member-photo">👨‍💻</div>
+              <div class="member-name">Mohamed M'barki</div>
+              <div class="member-role">Developer</div>
+              <div class="member-bio">
+                Bringing the interactive experience to life with creative
+                programming and user experience design.
+              </div>
+            </div>
+
+            <div class="team-member">
+              <div class="member-photo">👨‍🎨</div>
+              <div class="member-name">Rayane Ghacha</div>
+              <div class="member-role">Documentation</div>
+              <div class="member-bio">
+                Creating comprehensive guides and documentation for the space
+                weather adventure.
+              </div>
+            </div>
+
+            <div class="team-member">
+              <div class="member-photo">👩‍🎨</div>
+              <div class="member-name">Salma Yaakoubi</div>
+              <div class="member-role">Graphic Designer</div>
+              <div class="member-bio">
+                Crafting beautiful visuals and user interfaces that make space
+                weather come alive.
+              </div>
+            </div>
+
+            <div class="team-member">
+              <div class="member-photo">👨‍💻</div>
+              <div class="member-name">Walid Benslimane</div>
+              <div class="member-role">Developer</div>
+              <div class="member-bio">
+                Building robust systems and ensuring seamless interactive
+                experiences for learners.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project Purpose -->
+        <div class="about-section">
+          <h3>🌟 Why We Created This</h3>
+          <div class="project-info">
+            <p>
+              <strong>Our Mission:</strong> To make space weather education
+              accessible, engaging, and fun for everyone!
+            </p>
+            <br />
+            <p>
+              Space weather affects our daily lives in ways many people don't
+              realize - from GPS navigation to power grids, from satellite
+              communications to airline routes. Through Stellar Stories, we aim
+              to:
+            </p>
+            <br />
+            <ul style="margin-left: 1.5rem; line-height: 1.8">
+              <li>
+                🎓 <strong>Educate:</strong> Teach complex space weather
+                concepts through interactive storytelling
+              </li>
+              <li>
+                🎮 <strong>Engage:</strong> Make learning fun with characters,
+                animations, and immersive experiences
+              </li>
+              <li>
+                🌍 <strong>Inspire:</strong> Spark curiosity about space science
+                and STEM careers
+              </li>
+              <li>
+                🚀 <strong>Empower:</strong> Give learners tools to understand
+                our cosmic environment
+              </li>
+            </ul>
+            <br />
+            <p>
+              This project was developed as part of the
+              <strong>NASA International Space Apps Challenge</strong>, bringing
+              together passionate individuals who believe in the power of
+              education to change the world.
+            </p>
+          </div>
+        </div>
+
+        <!-- Contact Information -->
+        <div class="about-section">
+          <h3>📞 Get In Touch</h3>
+          <div class="contact-info">
+            <div class="contact-item">
+              <strong>🌐 Project Website</strong>
+              <p>Visit our project page for updates and more resources</p>
+            </div>
+            <div class="contact-item">
+              <strong>📧 Email Us</strong>
+              <p>stellar.stories.team@gmail.com</p>
+            </div>
+            <div class="contact-item">
+              <strong>🐙 GitHub Repository</strong>
+              <p>Find our source code and contribute to the project</p>
+            </div>
+            <div class="contact-item">
+              <strong>🚀 NASA Space Apps</strong>
+              <p>Part of the global Space Apps Challenge community</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Technologies Used -->
+        <div class="about-section">
+          <h3>⚡ Built With</h3>
+          <div class="project-info">
+            <p>This project showcases modern web technologies:</p>
+            <br />
+            <div
+              style="
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+                gap: 1rem;
+                margin-top: 1rem;
+              "
+            >
+              <div
+                style="
+                  text-align: center;
+                  padding: 1rem;
+                  background: rgba(255, 255, 255, 0.1);
+                  border-radius: 10px;
+                "
+              >
+                <div style="font-size: 2rem; margin-bottom: 0.5rem">🌐</div>
+                <strong>HTML5</strong>
+              </div>
+              <div
+                style="
+                  text-align: center;
+                  padding: 1rem;
+                  background: rgba(255, 255, 255, 0.1);
+                  border-radius: 10px;
+                "
+              >
+                <div style="font-size: 2rem; margin-bottom: 0.5rem">🎨</div>
+                <strong>CSS3</strong>
+              </div>
+              <div
+                style="
+                  text-align: center;
+                  padding: 1rem;
+                  background: rgba(255, 255, 255, 0.1);
+                  border-radius: 10px;
+                "
+              >
+                <div style="font-size: 2rem; margin-bottom: 0.5rem">⚡</div>
+                <strong>JavaScript</strong>
+              </div>
+              <div
+                style="
+                  text-align: center;
+                  padding: 1rem;
+                  background: rgba(255, 255, 255, 0.1);
+                  border-radius: 10px;
+                "
+              >
+                <div style="font-size: 2rem; margin-bottom: 0.5rem">🎵</div>
+                <strong>Web Audio</strong>
+              </div>
+              <div
+                style="
+                  text-align: center;
+                  padding: 1rem;
+                  background: rgba(255, 255, 255, 0.1);
+                  border-radius: 10px;
+                "
+              >
+                <div style="font-size: 2rem; margin-bottom: 0.5rem">📱</div>
+                <strong>Responsive Design</strong>
+              </div>
+              <div
+                style="
+                  text-align: center;
+                  padding: 1rem;
+                  background: rgba(255, 255, 255, 0.1);
+                  border-radius: 10px;
+                "
+              >
+                <div style="font-size: 2rem; margin-bottom: 0.5rem">✨</div>
+                <strong>CSS Animations</strong>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Copyright -->
+        <div class="copyright-text">
+          <p>© 2025 Stellar Stories Team | NASA Space Apps Challenge</p>
+          <p>Made with ❤️ for space weather education | All rights reserved</p>
+          <p style="margin-top: 1rem; font-size: 0.8rem">
+            This project is open source and available for educational
+            purposes.<br />
+            Space weather data and scientific concepts sourced from NASA and
+            NOAA.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Audio Elements -->
+    <audio id="background-music" loop>
+      <source src="Audios/BackgroundMusic1.mp3" type="audio/mpeg" />
+    </audio>
+    <audio id="scene-audio"></audio>
+
+    <!-- External JavaScript -->
+    <script src="JS/script.js"></script>
+  </body>
+</html>
