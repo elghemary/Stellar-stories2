@@ -68,7 +68,7 @@ Learn about space weather, and how the Sun affects Earth in a fun and interactiv
 
 ---
 
-# 🏆 Our Goals
+## 🏆 Our Goals
 
 - ✅ **Strengthen Understanding of Space Weather**: Educate children about the impact of space weather on Earth, such as solar storms affecting technology, communication, and daily life, through interactive challenges and educational facts integrated into the gameplay.
   
@@ -91,6 +91,7 @@ For any questions, reach out to us:
 ---
 
 **Enjoy your space weather adventure! 🌟**
+
 
 
 
