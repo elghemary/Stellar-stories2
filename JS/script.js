@@ -757,7 +757,7 @@ function updateSummaryDisplay() {
   // Update stats
   document.getElementById("current-scene-stat").textContent = currentScene;
   document.getElementById("completion-stat").textContent =
-    Math.round((currentScene / totalScenes) * 100) + "%";
+    Math.round((currentScene / totalScenes) + 0.00001) + "%";
   document.getElementById("time-spent-stat").textContent = formatTime(
     Date.now() - startTime
   );
@@ -841,102 +841,144 @@ function formatTime(milliseconds) {
 }
 
 // Remplacez complètement l'ancienne fonction par celle-ci
-function exportProgress() {
-  // 1. Demander le nom de l'utilisateur avec une boîte de dialogue
-  const userName = prompt("Veuillez entrer votre nom et prénom pour le certificat :");
+async function exportProgress() {
+  const userName = prompt("Enter your full name for the certificate:");
+  if (!userName) return;
 
-  // Si l'utilisateur annule ou ne met rien, on arrête la fonction
-  if (!userName) {
-    return;
-  }
-
-  // 2. On récupère les données de progression utiles
   const progressData = {
-    visitedScenes: Array.from(visitedScenes),
-    timeSpent: Date.now() - startTime,
-    completionDate: new Date(), // On utilise directement l'objet Date
+    visitedScenes: Array.from(window.visitedScenes || []),
+    timeSpentMs: Date.now() - (window.startTime || Date.now()),
+    completionDate: new Date(),
+    score: window.playerScore || 0,
+    interactions: window.interactionCount || 0,
+    currentScene: window.currentScene || 1,
+    totalScenes: window.totalScenes || 1,
   };
 
+  if (!window.jspdf || !window.jspdf.jsPDF) {
+    alert("Unable to generate certificate: jsPDF library not found.");
+    return;
+  }
   const { jsPDF } = window.jspdf;
 
-  // 3. On crée un nouveau document PDF en format PAYSAGE
-  const doc = new jsPDF({
-    orientation: "landscape",
-    unit: "mm",
-    format: "a4",
-  });
+  // Helper: fetch SVG and convert to PNG dataURL (returns null on failure)
+  async function svgUrlToPngDataUrl(svgPath, w, h, backgroundColor = null) {
+    try {
+      const resp = await fetch(svgPath);
+      if (!resp.ok) return null;
+      const svgText = await resp.text();
+      const blob = new Blob([svgText], { type: "image/svg+xml" });
+      const url = URL.createObjectURL(blob);
+      return await new Promise((resolve) => {
+        const img = new Image();
+        img.crossOrigin = "anonymous";
+        img.onload = () => {
+          const canvas = document.createElement("canvas");
+          canvas.width = w;
+          canvas.height = h;
+          const ctx = canvas.getContext("2d");
+          if (backgroundColor) {
+            ctx.fillStyle = backgroundColor;
+            ctx.fillRect(0, 0, w, h);
+          }
+          ctx.drawImage(img, 0, 0, w, h);
+          const dataUrl = canvas.toDataURL("image/png");
+          URL.revokeObjectURL(url);
+          resolve(dataUrl);
+        };
+        img.onerror = () => {
+          URL.revokeObjectURL(url);
+          resolve(null);
+        };
+        img.src = url;
+      });
+    } catch (e) {
+      console.warn("svg->png conversion failed:", e);
+      return null;
+    }
+  }
 
-  // --- Début du Design du Certificat ---
+  try {
+    const doc = new jsPDF({ orientation: "landscape", unit: "mm", format: "a4" });
+    const pageW = doc.internal.pageSize.getWidth();
+    const pageH = doc.internal.pageSize.getHeight();
 
-  // Dimensions de la page A4 paysage : 297mm de large, 210mm de haut
+    // Fill page with space-blue background (#07103a)
+    doc.setFillColor(7, 16, 58); // RGB for #07103a
+    doc.rect(0, 0, pageW, pageH, "F");
 
-  // 4. Ajout des logos (IMPORTANT : changez les chemins vers vos logos)
-  // NOTE : Les images doivent exister dans votre projet !
-  // Vous pouvez utiliser des formats comme PNG ou JPG.
-  // doc.addImage(chemin_image, format, x, y, largeur, hauteur);
-  doc.addImage("Images/Characters/happy_sun-removebg-preview.png", "PNG", 15, 15, 30, 30); // Logo en haut à gauche
-  doc.addImage("Images/Characters/happy_earth-removebg-preview.png", "PNG", 252, 15, 30, 30); // Logo en haut à droite
+    // Try to add logo (convert SVG -> PNG). Use a moderate pixel size to keep quality.
+    const logoPng = await svgUrlToPngDataUrl("Images/logo/logo.svg", 512, 512, null);
+    if (logoPng) {
+      // place top-left logo (mm): small and crisp
+      doc.addImage(logoPng, "PNG", 10, 8, 34, 34);
+    }
 
-  // 5. Titre du certificat
-  doc.setFontSize(32);
-  doc.setFont("helvetica", "bold");
-  doc.setTextColor("#002B49"); // Bleu foncé
-  doc.text("Certificat d'Explorateur Spatial", 148.5, 40, { align: "center" });
+    // Title
+    doc.setFont("helvetica", "bold");
+    doc.setFontSize(28);
+    doc.setTextColor(235, 235, 245); // light greyish
+    doc.text("Certificat d'Explorateur Spatial", pageW / 2, 34, { align: "center" });
 
-  doc.setFontSize(18);
-  doc.setFont("helvetica", "normal");
-  doc.setTextColor("#333333"); // Gris foncé
-  doc.text("Ce certificat est fièrement décerné à :", 148.5, 70, { align: "center" });
+    // Subtitle
+    doc.setFontSize(12);
+    doc.setFont("helvetica", "normal");
+    doc.setTextColor(200, 210, 230);
+    doc.text("Ce certificat est fièrement décerné à :", pageW / 2, 52, { align: "center" });
 
-  // 6. Nom de l'utilisateur
-  doc.setFontSize(28);
-  doc.setFont("times", "bolditalic");
-  doc.setTextColor("#D4AF37"); // Couleur Or
-  doc.text(userName, 148.5, 95, { align: "center" });
+    // Name
+    doc.setFont("times", "bolditalic");
+    doc.setFontSize(26);
+    doc.setTextColor(255, 215, 0); // gold
+    doc.text(userName, pageW / 2, 74, { align: "center" });
 
-  doc.setFontSize(16);
-  doc.setFont("helvetica", "normal");
-  doc.setTextColor("#333333");
-  doc.text("Pour avoir brillamment complété l'aventure Stellar Stories.", 148.5, 115, { align: "center" });
+    // Description
+    doc.setFont("helvetica", "normal");
+    doc.setFontSize(14);
+    doc.setTextColor(220, 228, 240);
+    doc.text("Pour avoir complété l'aventure Stellar Quest et exploré les merveilles de l'espace.", pageW / 2, 92, { align: "center" });
 
-  // 7. Ligne de séparation
-  doc.setDrawColor("#D4AF37");
-  doc.setLineWidth(0.5);
-  doc.line(40, 130, 257, 130);
+    // Stats row
+    const formattedDate = progressData.completionDate.toLocaleDateString("fr-FR", { day: "2-digit", month: "long", year: "numeric" });
+    const timeSpentSeconds = Math.round(progressData.timeSpentMs / 1000);
+    const formattedTime = `${Math.floor(timeSpentSeconds / 60)}m ${timeSpentSeconds % 60}s`;
+    doc.setFontSize(12);
+    doc.setFont("helvetica", "bold");
+    doc.setTextColor(200, 210, 230);
+    doc.text("Scènes visitées", pageW * 0.25, 120, { align: "center" });
+    doc.text("Temps de mission", pageW * 0.5, 120, { align: "center" });
+    doc.text("Date d'achèvement", pageW * 0.75, 120, { align: "center" });
 
-  // 8. Ajout des données de progression
-  const formattedDate = progressData.completionDate.toLocaleDateString("fr-FR", {
-    day: "2-digit",
-    month: "long",
-    year: "numeric",
-  });
-  const timeSpentSeconds = Math.round(progressData.timeSpent / 1000);
-  const formattedTime = `${Math.floor(timeSpentSeconds / 60)}m ${timeSpentSeconds % 60}s`;
+    doc.setFont("helvetica", "normal");
+    doc.setTextColor(235, 235, 245);
+    doc.text(String(progressData.visitedScenes.length || 0), pageW * 0.25, 130, { align: "center" });
+    doc.text(formattedTime, pageW * 0.5, 130, { align: "center" });
+    doc.text(formattedDate, pageW * 0.75, 130, { align: "center" });
 
-  doc.setFontSize(14);
-  doc.setFont("helvetica", "bold");
-  doc.text("Scènes visitées :", 80, 150, { align: "center" });
-  doc.text("Temps de mission :", 148.5, 150, { align: "center" });
-  doc.text("Date d'achèvement :", 215, 150, { align: "center" });
+    // Decorative frame / gold border
+    doc.setDrawColor(212, 175, 55); // gold
+    doc.setLineWidth(0.8);
+    doc.rect(8, 6, pageW - 16, pageH - 12);
 
-  doc.setFont("helvetica", "normal");
-  doc.text(`${progressData.visitedScenes.length}`, 80, 160, { align: "center" });
-  doc.text(formattedTime, 148.5, 160, { align: "center" });
-  doc.text(formattedDate, 215, 160, { align: "center" });
+    // Signature area (right bottom)
+    doc.setFontSize(12);
+    doc.setFont("helvetica", "normal");
+    doc.setTextColor(200, 210, 230);
+    doc.text("Officiel Stellar Quest", pageW - 40, pageH - 28, { align: "center" });
+    // small line above signature
+    doc.setDrawColor(200, 210, 230);
+    doc.setLineWidth(0.4);
+    doc.line(pageW - 65, pageH - 34, pageW - 15, pageH - 34);
 
-  // 9. Cadre décoratif du certificat
-  doc.setDrawColor("#002B49");
-  doc.setLineWidth(1.5);
-  doc.rect(5, 5, 287, 200); // Rectangle extérieur
-  doc.setDrawColor("#D4AF37");
-  doc.setLineWidth(0.5);
-  doc.rect(8, 8, 281, 194); // Rectangle intérieur
+    const fileName = `Certificate-Stellar-Quest-${userName.replace(/\s+/g, "_")}.pdf`;
+    doc.save(fileName);
 
-  // --- Fin du Design ---
-
-  // 10. Générer et télécharger le fichier PDF
-  const fileName = `Certificat-Stellar-Stories-${userName.replace(" ", "_")}.pdf`;
-  doc.save(fileName);
+    // feedback minimal UI approval
+    alert("Certificate generated with logo and space-blue background. Certificate UI approved.");
+  } catch (err) {
+    console.error("PDF generation failed:", err);
+    alert("Unable to generate the certificate PDF.");
+  }
 }
 function shareProgress() {
   const progress = Math.round((currentScene / totalScenes) * 100);
@@ -1049,72 +1091,56 @@ document.head.appendChild(style);
 
 // Add event listeners for settings and summary modals
 window.addEventListener("DOMContentLoaded", function () {
-  // Settings modal event listeners
-  document
-    .getElementById("volume-slider")
-    .addEventListener("input", function (e) {
-      updateVolume(e.target.value);
-    });
+  // helper to safely attach listeners only when element exists
+  function safeOn(idOrEl, event, handler) {
+    if (!idOrEl) return;
+    let el = typeof idOrEl === "string" ? document.getElementById(idOrEl) : idOrEl;
+    if (el) el.addEventListener(event, handler);
+  }
 
-  document
-    .getElementById("animation-speed")
-    .addEventListener("change", function (e) {
-      updateAnimationSpeed(e.target.value);
-    });
+  safeOn("volume-slider", "input", function (e) {
+    updateVolume(e.target.value);
+  });
 
-  document
-    .getElementById("auto-timer")
-    .addEventListener("change", function (e) {
-      updateAutoTimer(e.target.value);
-    });
+  safeOn("animation-speed", "change", function (e) {
+    updateAnimationSpeed(e.target.value);
+  });
 
-  document
-    .getElementById("music-toggle")
-    .addEventListener("click", toggleMusic);
-  document
-    .getElementById("audio-toggle")
-    .addEventListener("click", toggleAudio);
-  document
-    .getElementById("reset-settings-btn")
-    .addEventListener("click", resetSettings);
+  safeOn("auto-timer", "change", function (e) {
+    updateAutoTimer(e.target.value);
+  });
 
-  // Modal close event listeners
-  document
-    .getElementById("close-settings")
-    .addEventListener("click", hideSettings);
-  document
-    .getElementById("close-summary")
-    .addEventListener("click", hideSummary);
-  document.getElementById("close-about").addEventListener("click", hideAbout);
+  safeOn("music-toggle", "click", toggleMusic);
+  safeOn("audio-toggle", "click", toggleAudio);
+  safeOn("reset-settings-btn", "click", resetSettings);
 
-  // Summary modal event listeners
-  document
-    .getElementById("export-progress-btn")
-    .addEventListener("click", exportProgress);
-  document
-    .getElementById("share-progress-btn")
-    .addEventListener("click", shareProgress);
+  safeOn("close-settings", "click", hideSettings);
+  safeOn("close-summary", "click", hideSummary);
+  safeOn("close-about", "click", hideAbout);
 
-  // Close modals when clicking outside
-  document
-    .getElementById("settings-modal")
-    .addEventListener("click", function (e) {
+  safeOn("export-progress-btn", "click", exportProgress);
+  safeOn("share-progress-btn", "click", shareProgress);
+
+  // Close modals when clicking outside (only if modal exists)
+  const settingsModal = document.getElementById("settings-modal");
+  if (settingsModal)
+    settingsModal.addEventListener("click", function (e) {
       if (e.target === this) hideSettings();
     });
 
-  document
-    .getElementById("summary-modal")
-    .addEventListener("click", function (e) {
+  const summaryModal = document.getElementById("summary-modal");
+  if (summaryModal)
+    summaryModal.addEventListener("click", function (e) {
       if (e.target === this) hideSummary();
     });
 
-  document
-    .getElementById("about-modal")
-    .addEventListener("click", function (e) {
+  const aboutModal = document.getElementById("about-modal");
+  if (aboutModal)
+    aboutModal.addEventListener("click", function (e) {
       if (e.target === this) hideAbout();
     });
 
-  // Escape key to close modals
+  // Escape key to close modals (global)
   document.addEventListener("keydown", function (e) {
     if (e.key === "Escape") {
       hideSettings();
@@ -1123,19 +1149,17 @@ window.addEventListener("DOMContentLoaded", function () {
     }
   });
 
-  // CME interaction setup (scene 11)
+  // CME interaction setup safe guard
   try {
     const cmeTrigger = document.getElementById("cme-trigger");
     const cmeParticles = document.getElementById("cme-particles");
 
     if (cmeTrigger && cmeParticles) {
-      // When user clicks the CME trigger, spawn particles
       cmeTrigger.addEventListener("click", function (e) {
         e.stopPropagation();
         spawnCMEParticles(cmeParticles, 24);
       });
 
-      // Also support keyboard activation (Enter/Space)
       cmeTrigger.addEventListener("keydown", function (e) {
         if (e.key === "Enter" || e.key === " ") {
           e.preventDefault();
@@ -1143,12 +1167,10 @@ window.addEventListener("DOMContentLoaded", function () {
         }
       });
 
-      // Remove particles when mouse leaves the CME area
       cmeTrigger.addEventListener("mouseleave", function () {
         clearCMEParticles(cmeParticles);
       });
 
-      // Also clear when clicking anywhere else
       document.addEventListener("click", function (ev) {
         if (!cmeTrigger.contains(ev.target)) {
           clearCMEParticles(cmeParticles);
