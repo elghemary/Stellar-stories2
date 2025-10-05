@@ -1,4 +1,4 @@
-# 🌌 Stellar Stories – NASA Space Apps Challenge 2025
+  # 🌌 Stellar Stories – NASA Space Apps Challenge 2025
 
 Welcome to the official repository of **Mindcraft Seniors** for the **NASA Space Apps Challenge 2025**!  
 
@@ -18,7 +18,7 @@ Our goal is to build solutions that make space knowledge accessible and inspirin
   <table style="width: 100%; text-align: center;">
       <tr>
           <td>
-              <img src="https://github.com/user-attachments/assets/f6bc4d21-be57-4304-852f-e2bda73f213d" alt="Taha Taidi Laamiri" width="250" height="250" style="border-radius: 50%;">
+              <img src="https://github.com/user-attachments/assets/f6bc4d21-be57-4304-852f-e2bda73f213d" alt="Taha Taidi Laamiri" width="200" height="200" style="border-radius: 50%;">
                <h3><a href="https://github.com/elghemary" target="_blank">Farah EL Ghemary</a> 🏆</h3>
               <h3>📚 Science Student</h3>
               <p><strong>Role:</strong> Team owner </p>
@@ -91,6 +91,7 @@ For any questions, reach out to us:
 ---
 
 **Enjoy your space weather adventure! 🌟**
+
 
 
 
