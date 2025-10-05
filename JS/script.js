@@ -1,7 +1,7 @@
 // ===== STELLAR STORIES JAVASCRIPT =====
 
 let currentScene = 1;
-const totalScenes = 92;
+let totalScenes = 92; // will be overwritten on load to match actual .scene count
 let isAutoPlaying = false;
 let autoPlayTimer = null;
 
@@ -14,108 +14,108 @@ const INTERACTION_POINTS = 10;
 
 // Audio mapping based on available files
 const audioMap = {
-  1: "scene1.m4a",
-  2: "scene2.m4a",
-  3: "scene3.m4a",
-  4: "scene4.m4a",
-  5: "scene5.m4a",
-  6: "scene6.m4a",
-  7: "scene7.m4a",
-  8: "scene8.m4a",
-  9: "scene9.m4a",
-  10: "scene10.m4a",
-  11: "scene11.m4a",
-  12: "scene12.m4a",
-  13: "scene13.m4a",
-  14: "scene14.m4a",
-  15: "scene15.m4a",
-  16: "scene16.m4a",
-  17: "scene17.m4a",
-  18: "scene18.m4a",
-  19: "scene19.m4a",
-  20: "scene20.m4a",
-  21: "scene21.m4a",
-  22: "scene22.m4a",
-  23: "scene23.m4a",
-  24: "scene24.m4a",
-  25: "scene25.m4a",
-  26: "scene26.m4a",
-  27: "scene27.m4a",
-  28: "scene28.m4a",
-  29: "scene29.m4a",
-  30: "scene30.m4a",
-  31: "scene31.m4a",
-  32: "scene32.m4a",
-  33: "scene33.m4a",
-  34: "scene34.m4a",
-  35: "scene35.m4a",
-  36: "scene36.m4a",
-  37: "scene37.m4a",
-  38: "scene38.m4a",
-  39: "scene39.m4a",
-  40: "scene40.m4a",
-  41: "scene41.m4a",
-  42: "scene42.m4a",
-  43: "scene43.m4a",
-  44: "scene44.m4a",
-  45: "scene45.m4a",
-  46: "scene46.m4a",
-  47: "scene47.m4a",
-  48: "scene48.m4a",
-  49: "scene49.m4a",
-  50: "scene50.m4a",
-  51: "scene51.m4a",
-  52: "scene52.m4a",
-  53: "scene53.m4a",
-  54: "scene54.m4a",
-  55: "scene55.m4a",
-  56: "scene56.m4a",
-  57: "scene57.m4a",
-  58: "scene58.m4a",
-  59: "scene59.m4a",
-  60: "scene60.m4a",
-  61: "scene61.m4a",
-  62: "scene62.m4a",
-  63: "scene63.m4a",
-  64: "scene64.m4a",
-  65: "scene65.m4a",
-  66: "scene66.m4a",
-  67: "scene67.m4a",
-  68: "scene68.m4a",
-  69: "scene69.m4a",
-  70: "scene70.m4a",
-  71: "scene71.m4a",
-  72: "scene72.m4a",
-  73: "scene73.m4a",
-  74: "scene74.m4a",
-  75: "scene75.m4a",
-  76: "scene76.m4a",
-  77: "scene77.m4a",
-  78: "scene78.m4a",
-  79: "scene79.m4a",
-  80: "scene80.m4a",
-  81: "scene81.m4a",
-  82: "scene82.m4a",
-  83: "scene83.m4a",
-  84: "scene84.m4a",
-  85: "scene85.m4a",
-  86: "scene86.m4a",
-  87: "scene87.m4a",
-  88: "scene88.m4a",
-  89: "scene89.m4a",
-  90: "scene90.m4a",
-  91: "scene91.m4a",
-  92: "scene92.m4a",
-  93: "scene93.m4a",
-  94: "scene94.m4a",
-  95: "scene95.m4a",
-  96: "scene96.m4a",
-  97: "scene97.m4a",
-  98: "scene98.m4a",
-  99: "scene99.m4a",
-  100: "scene100.m4a",
-
+  1: "scene1.mp3",
+  2: "scene2.mp3",
+  3: "scene3.mp3",
+  4: "scene4.mp3",
+  5: "scene5.mp3",
+  6: "scene6.mp3",
+  7: "scene7.mp3",
+  8: "scene8.mp3",
+  9: "scene9.mp3",
+  10: "scene10.mp3",
+  11: "scene11.mp3",
+  12: "scene12.mp3",
+  13: "scene13.mp3",
+  14: "scene14.mp3",
+  15: "scene15.mp3",
+  16: "scene16.mp3",
+  17: "scene17.mp3",
+  18: "scene18.mp3",
+  19: "scene19.mp3",
+  20: "scene20.mp3",
+  21: "scene21.mp3",
+  22: "scene22.mp3",
+  23: "scene23.mp3",
+  24: "scene24.mp3",
+  25: "scene25.mp3",
+  26: "scene26.mp3",
+  27: "scene27.mp3",
+  28: "scene28.mp3",
+  29: "scene29.mp3",
+  30: "scene30.mp3",
+  31: "scene31.mp3",
+  32: "scene32.mp3",
+  33: "scene33.mp3",
+  34: "scene34.mp3",
+  35: "scene35.mp3",
+  36: "scene36.mp3",
+  37: "scene37.mp3",
+  38: "scene38.mp3",
+  39: "scene39.mp3",
+  40: "scene40.mp3",
+  41: "scene41.mp3",
+  42: "scene42.mp3",
+  43: "scene43.mp3",
+  44: "scene44.mp3",
+  45: "scene45.mp3",
+  46: "scene46.mp3",
+  47: "scene47.mp3",
+  48: "scene48.mp3",
+  49: "scene49.mp3",
+  50: "scene50.mp3",
+  51: "scene51.mp3",
+  52: "scene52.mp3",
+  53: "scene53.mp3",
+  54: "scene54.mp3",
+  55: "scene55.mp3",
+  56: "scene56.mp3",
+  57: "scene57.mp3",
+  58: "scene58.mp3",
+  59: "scene59.mp3",
+  60: "scene60.mp3",
+  61: "scene61.mp3",
+  62: "scene62.mp3",
+  63: "scene63.mp3",
+  64: "scene64.mp3",
+  65: "scene65.mp3",
+  66: "scene66.mp3",
+  67: "scene67.mp3",
+  68: "scene68.mp3",
+  69: "scene69.mp3",
+  70: "scene70.mp3",
+  71: "scene71.mp3",
+  72: "scene72.mp3",
+  73: "scene73.mp3",
+  74: "scene74.mp3",
+  75: "scene75.mp3",
+  76: "scene76.mp3",
+  77: "scene77.mp3",
+  78: "scene78.mp3",
+  79: "scene79.mp3",
+  80: "scene80.mp3",
+  81: "scene81.mp3",
+  82: "scene82.mp3",
+  83: "scene83.mp3",
+  84: "scene84.mp3",
+  85: "scene85.mp3",
+  86: "scene86.mp3",
+  87: "scene87.mp3",
+  88: "scene88.mp3",
+  89: "scene89.mp3",
+  90: "scene90.mp3",
+  91: "scene91.mp3",
+  92: "scene92.mp3",
+  93: "scene93.mp3",
+  94: "scene94.mp3",
+  95: "scene95.mp3",
+  96: "scene96.mp3",
+  97: "scene97.mp3",
+  98: "scene98.mp3",
+  99: "scene99.mp3",
+  100: "scene100.mp3",
 };
+
 
 // Initialize the story
 window.addEventListener("DOMContentLoaded", function () {
@@ -142,6 +142,17 @@ function simulateLoading() {
 function startStory() {
   document.getElementById("loading-screen").classList.add("hidden");
   document.getElementById("story-container").style.display = "flex";
+
+  // Ensure totalScenes matches the number of scene elements in the HTML
+  try {
+    const scenes = document.querySelectorAll(".scene");
+    if (scenes && scenes.length > 0) {
+      totalScenes = scenes.length;
+    }
+  } catch (e) {
+    // If DOM isn't ready for some reason, keep the existing totalScenes
+    console.warn("Could not detect scenes automatically:", e);
+  }
 
   // Initialize audio settings
   initializeAudio();
@@ -268,7 +279,8 @@ function resetScore() {
 }
 
 function slideToScene(sceneNumber) {
-  if (sceneNumber < 1 || sceneNumber > totalScenes) return;
+  // Clamp requested scene number to valid range to avoid accidental wrap-around
+  sceneNumber = Math.max(1, Math.min(totalScenes, Number(sceneNumber) || 1));
 
   currentScene = sceneNumber;
   const container = document.getElementById("scenes-container");
@@ -280,6 +292,25 @@ function slideToScene(sceneNumber) {
   updateProgress();
   playSceneAudio(sceneNumber);
   visitedScenes.add(sceneNumber);
+
+  // Clear any existing scared-shake classes in the scenes container
+  try {
+    document.querySelectorAll(".scared-shake").forEach((el) =>
+      el.classList.remove("scared-shake")
+    );
+
+    // Add a small shaking animation to the character in scene 21 (21st slide)
+    const scenes = document.querySelectorAll("#scenes-container .scene");
+    const activeScene = scenes[sceneNumber - 1];
+    if (activeScene) {
+      const char = activeScene.querySelector(".character");
+      if (char && sceneNumber === 21) {
+        char.classList.add("scared-shake");
+      }
+    }
+  } catch (e) {
+    // ignore if DOM not ready
+  }
 
   // Special scene effects
   if (sceneNumber === 6) {
@@ -306,6 +337,14 @@ function nextScene() {
   if (currentScene < totalScenes) {
     slideToScene(currentScene + 1);
     trackInteraction();
+
+    // If we reached the final scene while autoplaying, stop autoplay to avoid any further actions
+    if (currentScene === totalScenes && isAutoPlaying) {
+      isAutoPlaying = false;
+      clearTimeout(autoPlayTimer);
+      const playBtn = document.getElementById("play-btn");
+      if (playBtn) playBtn.textContent = "▶️";
+    }
   }
 }
 
@@ -354,8 +393,13 @@ function toggleAutoPlay() {
     autoPlayTimer = setTimeout(() => {
       if (currentScene < totalScenes) {
         nextScene();
-        if (isAutoPlaying) {
+        if (isAutoPlaying && currentScene < totalScenes) {
           setTimeout(toggleAutoPlay, timerDelay);
+        }
+        // If we reached the end, ensure autoplay is turned off
+        if (currentScene === totalScenes) {
+          isAutoPlaying = false;
+          if (playBtn) playBtn.textContent = "▶️";
         }
       }
     }, timerDelay);
@@ -402,58 +446,63 @@ function characterSpeak(character, message) {
   }, 3000);
 }
 
-function changeMood(mood, btnElem) {
+function changeMood(mood, btn) {
+  // btn is expected to be the clicked element (this) passed from the HTML
   const moodBtns = document.querySelectorAll(".mood-btn");
-  const sunChar = document.getElementById("scene5-sun");
-  const scene5 = sunChar ? sunChar.closest('.scene') : null;
+  const sunChar = document.getElementById("mood-sun");
+  const scene5Char = document.getElementById("scene5-sun");
 
-  moodBtns.forEach((btn) => btn.classList.remove("active"));
-  if (btnElem) btnElem.classList.add("active");
+  // Update active button
+  moodBtns.forEach((b) => b.classList.remove("active"));
+  if (btn && btn.classList) btn.classList.add("active");
 
   // Award points for mood interaction
   awardInteractionPoints(`mood-${mood}`);
 
-  // Reset any previous mood visuals
-  if (sunChar) {
-    sunChar.style.filter = "";
-    sunChar.style.animation = "";
+  // Define mood -> image and style mapping
+  const moods = {
+    happy: {
+      src: "Images/Characters/Sun_happy.png",
+      filter: "brightness(1.2) saturate(1.3) drop-shadow(0 0 20px #ffd700)",
+      animation: "sun-glow 2s ease-in-out infinite",
+    },
+    sneezy: {
+      src: "Images/Characters/Sun_sneeze.png",
+      filter: "brightness(0.95) contrast(1.05) drop-shadow(0 0 8px #ffb399)",
+      animation: "",
+    },
+    angry: {
+      // fallback to an angry sun asset if present in project
+      src: "Images/Characters/angy sun from the front.png",
+      filter: "brightness(0.8) contrast(1.5) hue-rotate(20deg) drop-shadow(0 0 30px #ff4500)",
+      animation: "flare-intense 0.5s ease-in-out infinite",
+    },
+  };
+
+  const data = moods[mood] || moods.happy;
+
+  // Swap images if elements exist
+  try {
+    if (sunChar && data.src) {
+      sunChar.src = data.src;
+      sunChar.style.filter = data.filter || "";
+      sunChar.style.animation = data.animation || "";
+    }
+
+    if (scene5Char && data.src) {
+      scene5Char.src = data.src;
+      scene5Char.style.filter = data.filter || "";
+      scene5Char.style.animation = data.animation || "";
+    }
+  } catch (e) {
+    console.warn("Could not change mood image:", e);
   }
-  if (scene5) {
-    scene5.classList.remove('angry-tint');
-  }
-
-  switch (mood) {
-    case "happy":
-      if (sunChar) {
-        sunChar.src = "Images/Characters/Sun_happy.png";
-        sunChar.style.filter =
-          "brightness(1.2) saturate(1.3) drop-shadow(0 0 20px #ffd700)";
-        sunChar.style.animation = "sun-glow 2s ease-in-out infinite";
-      }
-      break;
-
-    case "sneezy":
-      // swap to sneezing image and trigger flare/shake
-      if (sunChar) {
-        sunChar.src = "Images/Characters/Sun_sneeze.png";
-        sunChar.style.filter = "brightness(1.1) drop-shadow(0 0 30px #ffcf9a)";
-        sunChar.style.animation = "pulse 1s ease-in-out 1";
-      }
-      // trigger only the shake (no rectangular flare overlay)
-      setTimeout(() => triggerShakeOnly(1000), 150);
-      break;
-
-    case "angry":
-      // swap to CMEs image and apply red tint to the scene
-      if (sunChar) {
-        sunChar.src = "Images/Characters/sun_with_CMEs-removebg-preview.png";
-        sunChar.style.filter = "brightness(0.9) saturate(1.2) drop-shadow(0 0 40px #ff4500)";
-        sunChar.style.animation = "flare-intense 0.8s ease-in-out infinite";
-      }
-      if (scene5) {
-        scene5.classList.add('angry-tint');
-      }
-      break;
+  // Apply global mood class to body so all characters get consistent styles
+  try {
+    document.body.classList.remove("mood-happy", "mood-sneezy", "mood-angry");
+    document.body.classList.add(`mood-${mood}`);
+  } catch (e) {
+    console.warn("Could not apply global mood class:", e);
   }
 }
 
@@ -474,22 +523,13 @@ function triggerFlareEffect() {
   const flareEffect = document.getElementById("flare-effect");
   flareEffect.style.display = "block";
 
-  // Screen shake effect (stronger)
-  // use a slightly longer duration so the effect feels more powerful
-  document.body.style.animation = "shake 1s cubic-bezier(.36,.07,.19,.97)";
+  // Screen shake effect
+  document.body.style.animation = "shake 0.5s ease-in-out";
 
   setTimeout(() => {
     flareEffect.style.display = "none";
     document.body.style.animation = "";
   }, 2000);
-}
-
-// Shake only (no visual flare overlay)
-function triggerShakeOnly(duration = 1000) {
-  document.body.style.animation = `shake ${duration / 1000}s cubic-bezier(.36,.07,.19,.97)`;
-  setTimeout(() => {
-    document.body.style.animation = "";
-  }, duration + 50);
 }
 
 function startAuroraAnimation() {
@@ -546,47 +586,6 @@ function startCelebration() {
         firework.remove();
       }, 2000);
     }, i * 200);
-  }
-}
-
-/**
- * Trigger a Coronal Mass Ejection explosion visual from the sun character.
- * Creates a radial red burst element positioned over the character and
- * animates it outward, then cleans up. Awards an interaction point.
- */
-function triggerCMEExplosion(btn) {
-  try {
-    const sun = document.getElementById('cme-sun');
-    if (!sun) return;
-
-    // Award points for CME interaction
-    awardInteractionPoints('cme-explosion');
-
-    // compute character center on the page
-    const rect = sun.getBoundingClientRect();
-    const cx = rect.left + rect.width / 2 + window.scrollX;
-    const cy = rect.top + rect.height / 2 + window.scrollY;
-
-    const burst = document.createElement('div');
-    burst.className = 'cme-burst';
-    burst.style.left = cx + 'px';
-    burst.style.top = cy + 'px';
-    burst.style.transform = 'translate(-50%, -50%) scale(0.1)';
-
-    document.body.appendChild(burst);
-
-    // Remove after animation completes
-    setTimeout(() => {
-      burst.remove();
-    }, 1000);
-
-    // Optionally pulse the character for emphasis
-    sun.style.filter = 'brightness(0.9) saturate(1.2) drop-shadow(0 0 60px #ff2a2a)';
-    setTimeout(() => {
-      sun.style.filter = '';
-    }, 900);
-  } catch (e) {
-    console.error('CME explosion failed', e);
   }
 }
 
@@ -843,27 +842,104 @@ function formatTime(milliseconds) {
   return `${minutes}:${seconds.toString().padStart(2, "0")}`;
 }
 
+// Remplacez complètement l'ancienne fonction par celle-ci
 function exportProgress() {
+  // 1. Demander le nom de l'utilisateur avec une boîte de dialogue
+  const userName = prompt("Veuillez entrer votre nom et prénom pour le certificat :");
+
+  // Si l'utilisateur annule ou ne met rien, on arrête la fonction
+  if (!userName) {
+    return;
+  }
+
+  // 2. On récupère les données de progression utiles
   const progressData = {
-    currentScene: currentScene,
     visitedScenes: Array.from(visitedScenes),
     timeSpent: Date.now() - startTime,
-    interactions: interactionCount,
-    settings: settings,
-    completionDate: new Date().toISOString(),
+    completionDate: new Date(), // On utilise directement l'objet Date
   };
 
-  const dataStr = JSON.stringify(progressData, null, 2);
-  const dataBlob = new Blob([dataStr], { type: "application/json" });
+  const { jsPDF } = window.jspdf;
 
-  const link = document.createElement("a");
-  link.href = URL.createObjectURL(dataBlob);
-  link.download = `stellar-stories-progress-${
-    new Date().toISOString().split("T")[0]
-  }.json`;
-  link.click();
+  // 3. On crée un nouveau document PDF en format PAYSAGE
+  const doc = new jsPDF({
+    orientation: "landscape",
+    unit: "mm",
+    format: "a4",
+  });
+
+  // --- Début du Design du Certificat ---
+
+  // Dimensions de la page A4 paysage : 297mm de large, 210mm de haut
+
+  // 4. Ajout des logos (IMPORTANT : changez les chemins vers vos logos)
+  // NOTE : Les images doivent exister dans votre projet !
+  // Vous pouvez utiliser des formats comme PNG ou JPG.
+  // doc.addImage(chemin_image, format, x, y, largeur, hauteur);
+  doc.addImage("Images/Characters/happy_sun-removebg-preview.png", "PNG", 15, 15, 30, 30); // Logo en haut à gauche
+  doc.addImage("Images/Characters/happy_earth-removebg-preview.png", "PNG", 252, 15, 30, 30); // Logo en haut à droite
+
+  // 5. Titre du certificat
+  doc.setFontSize(32);
+  doc.setFont("helvetica", "bold");
+  doc.setTextColor("#002B49"); // Bleu foncé
+  doc.text("Certificat d'Explorateur Spatial", 148.5, 40, { align: "center" });
+
+  doc.setFontSize(18);
+  doc.setFont("helvetica", "normal");
+  doc.setTextColor("#333333"); // Gris foncé
+  doc.text("Ce certificat est fièrement décerné à :", 148.5, 70, { align: "center" });
+
+  // 6. Nom de l'utilisateur
+  doc.setFontSize(28);
+  doc.setFont("times", "bolditalic");
+  doc.setTextColor("#D4AF37"); // Couleur Or
+  doc.text(userName, 148.5, 95, { align: "center" });
+
+  doc.setFontSize(16);
+  doc.setFont("helvetica", "normal");
+  doc.setTextColor("#333333");
+  doc.text("Pour avoir brillamment complété l'aventure Stellar Stories.", 148.5, 115, { align: "center" });
+
+  // 7. Ligne de séparation
+  doc.setDrawColor("#D4AF37");
+  doc.setLineWidth(0.5);
+  doc.line(40, 130, 257, 130);
+
+  // 8. Ajout des données de progression
+  const formattedDate = progressData.completionDate.toLocaleDateString("fr-FR", {
+    day: "2-digit",
+    month: "long",
+    year: "numeric",
+  });
+  const timeSpentSeconds = Math.round(progressData.timeSpent / 1000);
+  const formattedTime = `${Math.floor(timeSpentSeconds / 60)}m ${timeSpentSeconds % 60}s`;
+
+  doc.setFontSize(14);
+  doc.setFont("helvetica", "bold");
+  doc.text("Scènes visitées :", 80, 150, { align: "center" });
+  doc.text("Temps de mission :", 148.5, 150, { align: "center" });
+  doc.text("Date d'achèvement :", 215, 150, { align: "center" });
+
+  doc.setFont("helvetica", "normal");
+  doc.text(`${progressData.visitedScenes.length}`, 80, 160, { align: "center" });
+  doc.text(formattedTime, 148.5, 160, { align: "center" });
+  doc.text(formattedDate, 215, 160, { align: "center" });
+
+  // 9. Cadre décoratif du certificat
+  doc.setDrawColor("#002B49");
+  doc.setLineWidth(1.5);
+  doc.rect(5, 5, 287, 200); // Rectangle extérieur
+  doc.setDrawColor("#D4AF37");
+  doc.setLineWidth(0.5);
+  doc.rect(8, 8, 281, 194); // Rectangle intérieur
+
+  // --- Fin du Design ---
+
+  // 10. Générer et télécharger le fichier PDF
+  const fileName = `Certificat-Stellar-Stories-${userName.replace(" ", "_")}.pdf`;
+  doc.save(fileName);
 }
-
 function shareProgress() {
   const progress = Math.round((currentScene / totalScenes) * 100);
   const timeSpent = formatTime(Date.now() - startTime);
@@ -962,23 +1038,12 @@ document.addEventListener("touchend", function (e) {
 
 // Add shake animation for flare effect
 const shakeCSS = `
-@keyframes shake {
-  0% { transform: translateX(0) rotate(0deg); }
-  5% { transform: translateX(-22px) rotate(-1.5deg); }
-  10% { transform: translateX(18px) rotate(1.2deg); }
-  20% { transform: translateX(-16px) rotate(-1deg); }
-  30% { transform: translateX(14px) rotate(0.8deg); }
-  40% { transform: translateX(-12px) rotate(-0.8deg); }
-  50% { transform: translateX(10px) rotate(0.6deg); }
-  60% { transform: translateX(-8px) rotate(-0.5deg); }
-  75% { transform: translateX(6px) rotate(0.3deg); }
-  90% { transform: translateX(-4px) rotate(-0.15deg); }
-  100% { transform: translateX(0) rotate(0deg); }
-}
-
-/* small shake helper to avoid affecting layout during animation */
-.shake-active { animation-fill-mode: both; }
-`;
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-10px); }
+            75% { transform: translateX(10px); }
+        }
+    `;
 
 const style = document.createElement("style");
 style.textContent = shakeCSS;
@@ -1059,4 +1124,85 @@ window.addEventListener("DOMContentLoaded", function () {
       hideAbout();
     }
   });
+
+  // CME interaction setup (scene 11)
+  try {
+    const cmeTrigger = document.getElementById("cme-trigger");
+    const cmeParticles = document.getElementById("cme-particles");
+
+    if (cmeTrigger && cmeParticles) {
+      // When user clicks the CME trigger, spawn particles
+      cmeTrigger.addEventListener("click", function (e) {
+        e.stopPropagation();
+        spawnCMEParticles(cmeParticles, 24);
+      });
+
+      // Also support keyboard activation (Enter/Space)
+      cmeTrigger.addEventListener("keydown", function (e) {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          spawnCMEParticles(cmeParticles, 24);
+        }
+      });
+
+      // Remove particles when mouse leaves the CME area
+      cmeTrigger.addEventListener("mouseleave", function () {
+        clearCMEParticles(cmeParticles);
+      });
+
+      // Also clear when clicking anywhere else
+      document.addEventListener("click", function (ev) {
+        if (!cmeTrigger.contains(ev.target)) {
+          clearCMEParticles(cmeParticles);
+        }
+      });
+    }
+  } catch (err) {
+    console.warn("CME setup error:", err);
+  }
 });
+
+// Create a red particle burst inside the provided container
+function spawnCMEParticles(container, count = 20) {
+  if (!container) return;
+
+  // Clear existing particles first
+  clearCMEParticles(container);
+
+  for (let i = 0; i < count; i++) {
+    const p = document.createElement("div");
+    p.className = "particle";
+
+    // Random trajectory angle and distance
+    const angle = Math.random() * Math.PI * 2;
+    const distance = 40 + Math.random() * 90; // px
+    const tx = Math.cos(angle) * distance + "px";
+    const ty = Math.sin(angle) * distance + "px";
+
+    // Store CSS vars for the animation to pick up
+    p.style.setProperty("--tx", tx);
+    p.style.setProperty("--ty", ty);
+
+    // Start position centered-ish
+    p.style.left = 80 + Math.random() * 40 + "px"; // inside the particle container
+    p.style.top = 20 + Math.random() * 60 + "px";
+
+    container.appendChild(p);
+
+    // Remove after animation completes
+    p.addEventListener(
+      "animationend",
+      function () {
+        p.remove();
+      },
+      { once: true }
+    );
+  }
+}
+
+function clearCMEParticles(container) {
+  if (!container) return;
+  while (container.firstChild) {
+    container.removeChild(container.firstChild);
+  }
+}

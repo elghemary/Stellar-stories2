@@ -551,7 +551,6 @@ body {
 .scenes-container.scene-92 { transform: translateX(-9100%); }
 
 
-
 .scene {
   min-width: 100vw;
   height: 100%;
@@ -597,6 +596,26 @@ body {
   filter: brightness(1.5) drop-shadow(0 0 30px #ff4500);
 }
 
+/* Global mood classes: applying these to the body (e.g. body.mood-happy)
+   will ensure every character uses the same mood styling across scenes */
+body.mood-happy .character,
+body.mood-happy .character.sun {
+  filter: brightness(1.2) saturate(1.3) drop-shadow(0 0 20px #ffd700);
+  animation: sun-glow 2s ease-in-out infinite;
+}
+
+body.mood-sneezy .character,
+body.mood-sneezy .character.sun {
+  filter: brightness(0.95) contrast(1.05) drop-shadow(0 0 8px #ffb399);
+  animation: character-float 2.5s ease-in-out infinite;
+}
+
+body.mood-angry .character,
+body.mood-angry .character.sun {
+  filter: brightness(0.8) contrast(1.5) hue-rotate(20deg) drop-shadow(0 0 30px #ff4500);
+  animation: flare-intense 0.7s ease-in-out infinite;
+}
+
 /* Speech Bubbles */
 .speech-bubble {
   background: rgba(255, 255, 255, 0.95);
@@ -638,16 +657,6 @@ body {
   background-clip: text;
   -webkit-text-fill-color: transparent;
   animation: title-glow 2s ease-in-out infinite;
-}
-
-/* Scene 1 stronger layout tweaks: move title up more, enlarge it slightly, and lower Start button */
-#scene-1 .scene-title {
-  transform: translateY(-18px);
-  font-size: 3rem; /* slightly larger for emphasis */
-}
-
-#scene-1 .nav-btn {
-  transform: translateY(1cm);
 }
 
 /* Fun Fact Cards */
@@ -728,40 +737,6 @@ body {
   pointer-events: none;
 }
 
-/* CME Explosion burst (appears from the sun character and expands outward) */
-.cme-burst {
-  position: absolute;
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  background: radial-gradient(circle at center, rgba(255,40,40,0.98), rgba(220,20,20,0.9));
-  pointer-events: none;
-  z-index: 50;
-  transform: scale(0);
-  opacity: 0.95;
-  box-shadow: 0 0 120px rgba(255, 60, 60, 0.95), 0 0 40px rgba(255, 120, 120, 0.6) inset;
-  animation: cme-explode 900ms ease-out forwards;
-}
-
-@keyframes cme-explode {
-  0% {
-    transform: scale(0.1);
-    opacity: 0.98;
-  }
-  30% {
-    transform: scale(1.6);
-    opacity: 0.95;
-  }
-  60% {
-    transform: scale(3.8);
-    opacity: 0.7;
-  }
-  100% {
-    transform: scale(8);
-    opacity: 0;
-  }
-}
-
 /* Aurora Effects */
 .aurora {
   position: absolute;
@@ -778,17 +753,6 @@ body {
   );
   animation: aurora-dance 4s ease-in-out infinite;
   pointer-events: none;
-}
-
-/* Angry tint for scenes */
-.angry-tint::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: rgba(255, 60, 60, 0.18);
-  pointer-events: none;
-  mix-blend-mode: overlay;
-  z-index: 9;
 }
 
 /* Completion Effects */
@@ -1056,6 +1020,48 @@ body {
     opacity: 1;
     transform: scale(1) rotateY(0deg);
   }
+}
+
+/* Small scared shake used for scared characters (scene-specific) */
+@keyframes small-shake {
+  0% { transform: translateX(0); }
+  20% { transform: translateX(-6px); }
+  40% { transform: translateX(6px); }
+  60% { transform: translateX(-4px); }
+  80% { transform: translateX(4px); }
+  100% { transform: translateX(0); }
+}
+  .scared-shake {
+    animation: small-shake 0.6s ease-in-out infinite;
+    will-change: transform;
+  }
+
+
+/* Character lineup used in Scene 22 */
+.character-lineup{
+  display:flex;
+  gap:1rem;
+  align-items:center;
+  justify-content:center;
+  flex-wrap:nowrap;
+  overflow-x:auto;
+  padding:0.5rem 0;
+  -webkit-overflow-scrolling:touch;
+}
+.character-lineup .character.lineup{
+  width:96px;
+  height:auto;
+  flex:0 0 auto;
+  transition:transform .2s ease, box-shadow .2s ease;
+  cursor:pointer;
+}
+.character-lineup .character.lineup:hover{
+  transform:translateY(-6px) scale(1.03);
+  box-shadow:0 12px 30px rgba(0,0,0,0.25);
+}
+
+@media (max-width:480px){
+  .character-lineup .character.lineup{width:72px}
 }
 
 /* Settings Panel & Summary Modal */
@@ -1498,7 +1504,7 @@ body {
 
 /* Background Variations */
 .scene.solar.system {
-  background-image: url("../Images/Backgrounds/Background1.png");
+  background-image: url("../Images/Backgrounds/Ba ckground1.png");
 }
 .scene.space {
   background-image: url("../Images/Backgrounds/Background2.webp");
@@ -1506,22 +1512,33 @@ body {
 .scene.ground {
   background-image: url("../Images/Backgrounds/Background3.png");
 }
-.scene.ISS1 {
-  background-image: url("../Images/Backgrounds/Background1.png");
+.scene.ISS {
+  background-image: url("../Images/Backgrounds/spaceship.png");
 }
+
 .scene.ISS2 {
-  background-image: url("../Images/Backgrounds/Background4.png");
-}
-.scene.shelter {
-  background-image: url("../Images/Backgrounds/shelter.png");
-}
-.scene.cockpit {
-  background-image: url("../Images/Backgrounds/Background.png");
+  background-image: url("../Images/Backgrounds/inside space ship.png");
 }
 .scene.tower {
   background-image: url("../Images/Backgrounds/tower.png");
 }
-.scene.farmer {
+.scene.shelter1 {
+  background-image: url("../Images/Backgrounds/shelter1.png");
+}
+.scene.shelter {
+  background-image: url("../Images/Backgrounds/shelter2.png");
+}
+.scene.cockpit {
+  background-image: url("../Images/Backgrounds/cocpit no chair.png");
+}
+.scene.tower {
+  background-image: url("../Images/Backgrounds/tower.png");
+}
+
+.scene.ISSprotectd {
+  background-image: url("../Images/Backgrounds/ISSprotected.png");
+}
+.scene.farmer { 
   background-image: url("../Images/Backgrounds/farmer.png");
 }
 .scene.tractor {
@@ -1542,7 +1559,6 @@ body {
 .scene.aurora {
   background-image: url("../Images/Backgrounds/aurora.png");
 }
-
 
 /* About Modal Styles */
 .about-content {
@@ -1712,3 +1728,208 @@ body {
     grid-template-columns: 1fr;
   }
 }
+/* ================================================= */
+/* STYLE AMÉLIORÉ MODALE "ABOUT" (THÈME NÉBULEUSE)   */
+/* ================================================= */
+
+#about-modal .modal-content {
+    width: 90vw;
+    max-width: 1200px;
+    height: 90vh;
+    background: linear-gradient(135deg, #111827, #0f172a); /* Fond en dégradé subtil */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    color: #cbd5e1;
+    padding: 0;
+}
+
+#about-modal .modal-close {
+    position: absolute;
+    top: 1.25rem;
+    right: 1.25rem;
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    z-index: 10;
+}
+#about-modal .modal-close svg {
+    width: 24px;
+    stroke: #cbd5e1;
+    stroke-width: 2;
+    fill: none;
+}
+#about-modal .modal-close:hover {
+    background: #8b5cf6; /* Violet */
+    transform: rotate(90deg);
+}
+#about-modal .modal-close:hover svg {
+    stroke: #fff;
+}
+
+.about-container {
+    height: 100%;
+    overflow-y: auto;
+    padding: 3rem 4rem;
+}
+
+/* --- En-tête --- */
+.about-header {
+    text-align: center;
+    margin-bottom: 3rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.about-title {
+    font-size: 2.8rem;
+    font-weight: 700;
+    /* Titre en dégradé */
+    background: linear-gradient(45deg, #a78bfa, #2dd4bf);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.about-subtitle {
+    font-size: 1.2rem;
+    color: #94a3b8;
+    margin-top: 0.5rem;
+}
+
+.about-section {
+    margin-bottom: 3rem;
+}
+
+.section-title {
+    font-size: 2rem;
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 1.5rem;
+}
+
+/* --- Cartes de l'équipe (Effet Glassmorphism) --- */
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+.team-card {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px); /* Pour Safari */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    padding: 1.25rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    transition: all 0.3s ease;
+}
+.team-card:hover {
+    transform: translateY(-5px);
+    border-color: #a78bfa;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.team-card-photo {
+    width: 64px;
+    height: 64px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #8b5cf6, #2dd4bf);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.75rem;
+    font-weight: 600;
+    color: #fff;
+}
+
+.member-name {
+    margin: 0;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #fff;
+}
+.member-role {
+    margin: 0.25rem 0 0 0;
+    color: #94a3b8;
+}
+
+/* --- Autres sections --- */
+.mission-card, .nasa-mention {
+    font-size: 1.1rem;
+    line-height: 1.7;
+}
+.nasa-mention {
+    margin-top: 1.5rem;
+    padding: 1rem;
+    background: rgba(45, 212, 191, 0.1);
+    border-left: 4px solid #2dd4bf;
+    border-radius: 0 8px 8px 0;
+}
+.tech-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+}
+.tech-item {
+    background-color: #334155;
+    color: #e2e8f0;
+    padding: 0.5rem 1rem;
+    border-radius: 9999px;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+/* --- Pied de page --- */
+.about-footer {
+    text-align: center;
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    color: #64748b;
+    font-size: 0.9rem;
+}
+
+/* --- Scrollbar personnalisée --- */
+.about-container::-webkit-scrollbar {
+    width: 8px;
+}
+.about-container::-webkit-scrollbar-track {
+    background: transparent;
+}
+.about-container::-webkit-scrollbar-thumb {
+    background-color: #475569;
+    border-radius: 10px;
+}
+/* ================================================= */
+/* AJUSTEMENTS MINEURS POUR LES ICÔNES SVG          */
+/* ================================================= */
+
+/* Assure un alignement vertical parfait pour les titres avec icône */
+.section-title {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem; /* Espace entre l'icône et le texte */
+}
+
+/* S'assure que le texte dans les succès est bien dans un span pour l'alignement */
+.achievement-item span {
+    flex-grow: 1;
+}
+
+
+
+
