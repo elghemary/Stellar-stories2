@@ -1547,10 +1547,10 @@ body.mood-angry .character.sun {
 
 /* Background Variations */
 .scene.solar.system {
-  background-image: url("../Images/Backgrounds/Ba ckground1.png");
+  background-image: url("../Images/Backgrounds/solarsystem1.png");
 }
 .scene.space {
-  background-image: url("../Images/Backgrounds/Background2.webp");
+  background-image: url("../Images/Backgrounds/Background2.jpg");
 }
 .scene.ground {
   background-image: url("../Images/Backgrounds/Background3.png");
