@@ -28,7 +28,7 @@ Our goal is to build solutions that make space knowledge accessible and inspirin
               <img src="https://github.com/user-attachments/assets/5c9d1a28-243c-4c6f-8052-82998c2a2ced" alt="Walid Ben Slimane" width="250" height="250" style="border-radius: 50%;">
               <h3><a href="https://github.com/walidbnslimane" target="_blank">Walid Ben Slimane</a> 🔧</h3>
               <h3>🔧 Tech Student</h3>
-              <p><strong>Role:</strong> Documentation & sound generating</p>
+              <p><strong>Role:</strong> Documentation </p>
           </td>
       </tr>
       <tr>
@@ -205,6 +205,7 @@ For any questions, reach out to us:
 ---
 
 **Enjoy your space weather adventure! 🌟**
+
 
 
 
