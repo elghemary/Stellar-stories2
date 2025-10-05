@@ -1,7 +1,7 @@
 // ===== STELLAR STORIES JAVASCRIPT =====
 
 let currentScene = 1;
-const totalScenes = 18;
+const totalScenes = 92;
 let isAutoPlaying = false;
 let autoPlayTimer = null;
 
@@ -20,18 +20,101 @@ const audioMap = {
   4: "scene4.m4a",
   5: "scene5.m4a",
   6: "scene6.m4a",
-  7: "scene8.m4a",
-  8: "scene9.m4a",
-  9: "scene11.m4a",
-  10: "scene12.m4a",
-  11: "scene13.m4a",
-  12: "scene14.m4a",
-  13: "scene16.mp3",
-  14: "scene17.mp3",
-  15: "scene19.mp3",
-  16: "scene20.mp3",
-  17: "scene 021.mp3",
-  18: "scene 063 [last one].mp3",
+  7: "scene7.m4a",
+  8: "scene8.m4a",
+  9: "scene9.m4a",
+  10: "scene10.m4a",
+  11: "scene11.m4a",
+  12: "scene12.m4a",
+  13: "scene13.m4a",
+  14: "scene14.m4a",
+  15: "scene15.m4a",
+  16: "scene16.m4a",
+  17: "scene17.m4a",
+  18: "scene18.m4a",
+  19: "scene19.m4a",
+  20: "scene20.m4a",
+  21: "scene21.m4a",
+  22: "scene22.m4a",
+  23: "scene23.m4a",
+  24: "scene24.m4a",
+  25: "scene25.m4a",
+  26: "scene26.m4a",
+  27: "scene27.m4a",
+  28: "scene28.m4a",
+  29: "scene29.m4a",
+  30: "scene30.m4a",
+  31: "scene31.m4a",
+  32: "scene32.m4a",
+  33: "scene33.m4a",
+  34: "scene34.m4a",
+  35: "scene35.m4a",
+  36: "scene36.m4a",
+  37: "scene37.m4a",
+  38: "scene38.m4a",
+  39: "scene39.m4a",
+  40: "scene40.m4a",
+  41: "scene41.m4a",
+  42: "scene42.m4a",
+  43: "scene43.m4a",
+  44: "scene44.m4a",
+  45: "scene45.m4a",
+  46: "scene46.m4a",
+  47: "scene47.m4a",
+  48: "scene48.m4a",
+  49: "scene49.m4a",
+  50: "scene50.m4a",
+  51: "scene51.m4a",
+  52: "scene52.m4a",
+  53: "scene53.m4a",
+  54: "scene54.m4a",
+  55: "scene55.m4a",
+  56: "scene56.m4a",
+  57: "scene57.m4a",
+  58: "scene58.m4a",
+  59: "scene59.m4a",
+  60: "scene60.m4a",
+  61: "scene61.m4a",
+  62: "scene62.m4a",
+  63: "scene63.m4a",
+  64: "scene64.m4a",
+  65: "scene65.m4a",
+  66: "scene66.m4a",
+  67: "scene67.m4a",
+  68: "scene68.m4a",
+  69: "scene69.m4a",
+  70: "scene70.m4a",
+  71: "scene71.m4a",
+  72: "scene72.m4a",
+  73: "scene73.m4a",
+  74: "scene74.m4a",
+  75: "scene75.m4a",
+  76: "scene76.m4a",
+  77: "scene77.m4a",
+  78: "scene78.m4a",
+  79: "scene79.m4a",
+  80: "scene80.m4a",
+  81: "scene81.m4a",
+  82: "scene82.m4a",
+  83: "scene83.m4a",
+  84: "scene84.m4a",
+  85: "scene85.m4a",
+  86: "scene86.m4a",
+  87: "scene87.m4a",
+  88: "scene88.m4a",
+  89: "scene89.m4a",
+  90: "scene90.m4a",
+  91: "scene91.m4a",
+  92: "scene92.m4a",
+  93: "scene93.m4a",
+  94: "scene94.m4a",
+  95: "scene95.m4a",
+  96: "scene96.m4a",
+  97: "scene97.m4a",
+  98: "scene98.m4a",
+  99: "scene99.m4a",
+  100: "scene100.m4a",
+
 };
 
 // Initialize the story
@@ -206,8 +289,8 @@ function slideToScene(sceneNumber) {
     }, 500);
   }
 
-  if (sceneNumber === 7) {
-    setTimeout(triggerFlareEffect, 1000);
+  if (sceneNumber === 8) {
+    setTimeout(triggerFlareEffect, 400);
   }
 
   if (sceneNumber === 10) {
@@ -319,32 +402,57 @@ function characterSpeak(character, message) {
   }, 3000);
 }
 
-function changeMood(mood) {
+function changeMood(mood, btnElem) {
   const moodBtns = document.querySelectorAll(".mood-btn");
-  const sunChar = document.getElementById("mood-sun");
+  const sunChar = document.getElementById("scene5-sun");
+  const scene5 = sunChar ? sunChar.closest('.scene') : null;
 
   moodBtns.forEach((btn) => btn.classList.remove("active"));
-  event.target.classList.add("active");
+  if (btnElem) btnElem.classList.add("active");
 
   // Award points for mood interaction
   awardInteractionPoints(`mood-${mood}`);
 
+  // Reset any previous mood visuals
+  if (sunChar) {
+    sunChar.style.filter = "";
+    sunChar.style.animation = "";
+  }
+  if (scene5) {
+    scene5.classList.remove('angry-tint');
+  }
+
   switch (mood) {
     case "happy":
-      sunChar.style.filter =
-        "brightness(1.2) saturate(1.3) drop-shadow(0 0 20px #ffd700)";
-      sunChar.style.animation = "sun-glow 2s ease-in-out infinite";
+      if (sunChar) {
+        sunChar.src = "Images/Characters/Sun_happy.png";
+        sunChar.style.filter =
+          "brightness(1.2) saturate(1.3) drop-shadow(0 0 20px #ffd700)";
+        sunChar.style.animation = "sun-glow 2s ease-in-out infinite";
+      }
       break;
-    case "stormy":
-      sunChar.style.filter =
-        "brightness(0.8) contrast(1.5) hue-rotate(20deg) drop-shadow(0 0 30px #ff4500)";
-      sunChar.style.animation = "flare-intense 0.5s ease-in-out infinite";
+
+    case "sneezy":
+      // swap to sneezing image and trigger flare/shake
+      if (sunChar) {
+        sunChar.src = "Images/Characters/Sun_sneeze.png";
+        sunChar.style.filter = "brightness(1.1) drop-shadow(0 0 30px #ffcf9a)";
+        sunChar.style.animation = "pulse 1s ease-in-out 1";
+      }
+      // trigger only the shake (no rectangular flare overlay)
+      setTimeout(() => triggerShakeOnly(1000), 150);
       break;
-    case "energetic":
-      sunChar.style.filter =
-        "brightness(1.5) saturate(2) drop-shadow(0 0 40px #ff8c00)";
-      sunChar.style.animation =
-        "character-float 1s ease-in-out infinite, pulse 1.5s ease-in-out infinite";
+
+    case "angry":
+      // swap to CMEs image and apply red tint to the scene
+      if (sunChar) {
+        sunChar.src = "Images/Characters/sun_with_CMEs-removebg-preview.png";
+        sunChar.style.filter = "brightness(0.9) saturate(1.2) drop-shadow(0 0 40px #ff4500)";
+        sunChar.style.animation = "flare-intense 0.8s ease-in-out infinite";
+      }
+      if (scene5) {
+        scene5.classList.add('angry-tint');
+      }
       break;
   }
 }
@@ -366,13 +474,22 @@ function triggerFlareEffect() {
   const flareEffect = document.getElementById("flare-effect");
   flareEffect.style.display = "block";
 
-  // Screen shake effect
-  document.body.style.animation = "shake 0.5s ease-in-out";
+  // Screen shake effect (stronger)
+  // use a slightly longer duration so the effect feels more powerful
+  document.body.style.animation = "shake 1s cubic-bezier(.36,.07,.19,.97)";
 
   setTimeout(() => {
     flareEffect.style.display = "none";
     document.body.style.animation = "";
   }, 2000);
+}
+
+// Shake only (no visual flare overlay)
+function triggerShakeOnly(duration = 1000) {
+  document.body.style.animation = `shake ${duration / 1000}s cubic-bezier(.36,.07,.19,.97)`;
+  setTimeout(() => {
+    document.body.style.animation = "";
+  }, duration + 50);
 }
 
 function startAuroraAnimation() {
@@ -429,6 +546,47 @@ function startCelebration() {
         firework.remove();
       }, 2000);
     }, i * 200);
+  }
+}
+
+/**
+ * Trigger a Coronal Mass Ejection explosion visual from the sun character.
+ * Creates a radial red burst element positioned over the character and
+ * animates it outward, then cleans up. Awards an interaction point.
+ */
+function triggerCMEExplosion(btn) {
+  try {
+    const sun = document.getElementById('cme-sun');
+    if (!sun) return;
+
+    // Award points for CME interaction
+    awardInteractionPoints('cme-explosion');
+
+    // compute character center on the page
+    const rect = sun.getBoundingClientRect();
+    const cx = rect.left + rect.width / 2 + window.scrollX;
+    const cy = rect.top + rect.height / 2 + window.scrollY;
+
+    const burst = document.createElement('div');
+    burst.className = 'cme-burst';
+    burst.style.left = cx + 'px';
+    burst.style.top = cy + 'px';
+    burst.style.transform = 'translate(-50%, -50%) scale(0.1)';
+
+    document.body.appendChild(burst);
+
+    // Remove after animation completes
+    setTimeout(() => {
+      burst.remove();
+    }, 1000);
+
+    // Optionally pulse the character for emphasis
+    sun.style.filter = 'brightness(0.9) saturate(1.2) drop-shadow(0 0 60px #ff2a2a)';
+    setTimeout(() => {
+      sun.style.filter = '';
+    }, 900);
+  } catch (e) {
+    console.error('CME explosion failed', e);
   }
 }
 
@@ -804,12 +962,23 @@ document.addEventListener("touchend", function (e) {
 
 // Add shake animation for flare effect
 const shakeCSS = `
-        @keyframes shake {
-            0%, 100% { transform: translateX(0); }
-            25% { transform: translateX(-10px); }
-            75% { transform: translateX(10px); }
-        }
-    `;
+@keyframes shake {
+  0% { transform: translateX(0) rotate(0deg); }
+  5% { transform: translateX(-22px) rotate(-1.5deg); }
+  10% { transform: translateX(18px) rotate(1.2deg); }
+  20% { transform: translateX(-16px) rotate(-1deg); }
+  30% { transform: translateX(14px) rotate(0.8deg); }
+  40% { transform: translateX(-12px) rotate(-0.8deg); }
+  50% { transform: translateX(10px) rotate(0.6deg); }
+  60% { transform: translateX(-8px) rotate(-0.5deg); }
+  75% { transform: translateX(6px) rotate(0.3deg); }
+  90% { transform: translateX(-4px) rotate(-0.15deg); }
+  100% { transform: translateX(0) rotate(0deg); }
+}
+
+/* small shake helper to avoid affecting layout during animation */
+.shake-active { animation-fill-mode: both; }
+`;
 
 const style = document.createElement("style");
 style.textContent = shakeCSS;

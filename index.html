@@ -101,44 +101,43 @@
       <main class="story-stage">
         <div class="scenes-container" id="scenes-container">
           <!-- Scene 1: Welcome -->
-          <section class="scene space" data-scene="1">
+          <section id="scene-1" class="scene solar system" data-scene="1">
             <div class="scene-content">
-              <h1 class="scene-title">Welcome to the Universe</h1>
+              <h1 class="scene-title">Stellar Stories</h1>
               <p style="font-size: 1.2rem; margin-bottom: 2rem">
-                Far away at the heart of our solar system, lives a star we all
-                know...
+                Start the stories
+                description
               </p>
               <button
                 class="nav-btn"
                 onclick="nextScene()"
                 style="width: auto; padding: 1rem 2rem; border-radius: 25px"
               >
-                Begin Adventure ✨
+                Start
               </button>
             </div>
           </section>
 
-          <!-- Scene 2: Meet Solara -->
-          <section class="scene sun" data-scene="2">
+          <!-- Scene 2 -->
+          <section class="scene space" data-scene="2">
             <div class="scene-content">
               <img
                 class="character sun"
-                src="Images/Characters/happy_sun-removebg-preview.png"
+                src="Images/Characters/Sun_happy.png"
                 alt="Solara the Sun"
                 onclick="characterSpeak(this, 'Hello! I am Solara, your friendly neighborhood star! ☀️')"
               />
               <div class="speech-bubble">
-                <p><strong>"Hello! I'm Solara, the Sun! ☀️"</strong></p>
                 <p>
-                  The sun shines every day, but it's so much more than just
-                  light and warmth.
+                  Far away at the heart of our solar system, lives a star we all know
                 </p>
+                <strong>The Sun!</strong>
               </div>
             </div>
           </section>
 
-          <!-- Scene 3: Sun's Age -->
-          <section class="scene sun" data-scene="3">
+          <!-- Scene 3 -->
+          <section class="scene space" data-scene="3">
             <div class="scene-content">
               <img
                 class="character sun"
@@ -148,231 +147,143 @@
               />
               <div class="speech-bubble">
                 <p>
-                  <strong
-                    >"I've been shining for 4.6 billion years, keeping planets
-                    warm and bright!"</strong
-                  >
-                </p>
-              </div>
-              <div class="fun-fact">
-                <h3>🌟 Amazing Fact</h3>
-                <p>
-                  The Sun produces more energy in one second than humans have
-                  used in all of history!
+                  The sun shines every day, but it’s more than just light
                 </p>
               </div>
             </div>
           </section>
 
-          <!-- Scene 4: Sun's Moods -->
-          <section class="scene sun" data-scene="4">
+          <!-- Scene 4 -->
+          <section class="scene space" data-scene="4">
             <div class="scene-content">
               <img
                 class="character sun"
                 id="mood-sun"
-                src="Images/Characters/happy_sun-removebg-preview.png"
+                src="Images/Characters/Sun_happy.png"
                 alt="Moody Solara"
               />
               <div class="speech-bubble">
                 <p>
-                  <strong
-                    >"I have lots of energy and sometimes... different moods!
-                    Click to see!"</strong
-                  >
+                  The Sun affects everyone on Earth and even beyond, Scientists have a special term for this: 
+                  <strong>space weather</strong>. Space weather includes all the activity and events happening in space, like solar winds, storms, and flares.
                 </p>
-              </div>
-              <div class="mood-selector">
-                <div class="mood-btn active" onclick="changeMood('happy')">
-                  😊 Happy
-                </div>
-                <div class="mood-btn" onclick="changeMood('stormy')">
-                  ⛈️ Stormy
-                </div>
-                <div class="mood-btn" onclick="changeMood('energetic')">
-                  🌟 Energetic
-                </div>
               </div>
             </div>
           </section>
 
-          <!-- Scene 5: Sunspots -->
-          <section class="scene sun" data-scene="5">
+          <!-- Scene 5 -->
+          <section class="scene space" data-scene="5">
             <div class="scene-content">
               <img
+                id="scene5-sun"
                 class="character sun"
-                src="Images/Characters/happy_sun-removebg-preview.png"
+                src="Images/Characters/Sun_happy.png"
                 alt="Spotted Solara"
                 onclick="showSunspotInfo()"
               />
               <div class="speech-bubble">
                 <p>
-                  <strong
-                    >"See these dark spots? They're called sunspots! Click me to
-                    learn more!"</strong
-                  >
+                  Hello! I’m Solara, the Sun! I’ve been shining for 4.6 billion years, keeping the planets warm and bright. I have a lot of energy and sometimes… moods!
                 </p>
               </div>
               <div class="fun-fact">
-                <h3>Sunspots</h3>
-                <p>
-                  Cool, dark areas on the Sun's surface that are about 3,000°F
-                  cooler than surrounding areas!
-                </p>
+                <div class="mood-selector">
+                  <div class="mood-btn active" onclick="changeMood('happy', this)">
+                    😊 Happy
+                  </div>
+                  <div class="mood-btn" onclick="changeMood('sneezy', this)">
+                    🤧 Sneezing
+                  </div>
+                  <div class="mood-btn" onclick="changeMood('angry', this)">
+                    😡 Angry
+                  </div>
+                </div>
               </div>
-            </div>
           </section>
 
-          <!-- Scene 6: Energy Building -->
-          <section class="scene sun" data-scene="6">
+          <!-- Scene 6 -->
+            <section class="scene space" data-scene="6">
             <div class="scene-content">
               <img
                 class="character sun"
-                src="Images/Characters/happy_sun-removebg-preview.png"
+                src="Images/Characters/Sun_happy.png"
                 alt="Energizing Solara"
               />
               <div class="speech-bubble">
                 <p>
-                  <strong
-                    >"They may look calm, but they mean I'm gearing up for a
-                    burst of energy!"</strong
-                  >
+                  See these freckles on my face? They’re called sunspots. They may look calm, but they mean I’m gearing up for a burst of energy! Just wait and see!
                 </p>
-              </div>
-              <div
-                style="
-                  display: flex;
-                  flex-direction: column;
-                  align-items: center;
-                "
-              >
-                <p>Energy Level:</p>
-                <div class="energy-meter">
-                  <div class="energy-fill building" id="energy-fill"></div>
-                </div>
               </div>
             </div>
           </section>
 
-          <!-- Scene 7: Solar Flare -->
-          <section class="scene sun" data-scene="7">
+          <!-- Scene 7 -->
+           <section class="scene space" data-scene="7">
             <div class="flare-effect" id="flare-effect"></div>
             <div class="scene-content">
               <img
                 class="character flare"
-                src="Images/Characters/sun_with_CMEs-removebg-preview.png"
+                src="Images/Characters/Sun_sneeze.png"
                 alt="Flaring Solara"
               />
               <div class="speech-bubble warning">
                 <p>
-                  <strong
-                    >"AHCHOOOO! 💥 A solar flare is coming your way!"</strong
-                  >
-                </p>
-              </div>
-              <div class="fun-fact">
-                <h3>Solar Flares</h3>
-                <p>
-                  Massive explosions that release the energy of billions of
-                  atomic bombs!
+                 Sometimes, Solara sneezes!
+                 These sneezes are called solar flares — bursts of light and energy that travel through space all the way to Earth
                 </p>
               </div>
             </div>
           </section>
 
-          <!-- Scene 8: CME -->
-          <section class="scene sun" data-scene="8">
+          <!-- Scene 8 -->
+          <section class="scene space" data-scene="8">
+            <div class="flare-effect" id="flare-effect"></div>
             <div class="scene-content">
               <img
-                class="character sun"
+                class="character flare"
+                src="Images/Characters/Sun_sneeze.png"
+                alt="Flaring Solara"
+              />
+              <div class="speech-bubble warning">
+                <p>
+                  <strong>AHCHOOOO! A solar flare is comming your waaaaaaay</strong>
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <!-- Scene 9 -->
+          <section class="scene space" data-scene="9">
+            <div class="flare-effect" id="flare-effect"></div>
+            <div class="scene-content">
+              <img
+                class="character"
                 src="Images/Characters/sun_with_CMEs-removebg-preview.png"
-                alt="CME Solara"
-              />
-              <div class="speech-bubble">
-                <p>
-                  <strong
-                    >"Sometimes I blow big bubbles called CMEs - Coronal Mass
-                    Ejections!"</strong
-                  >
-                </p>
-              </div>
-              <div class="fun-fact">
-                <h3>Coronal Mass Ejections</h3>
-                <p>
-                  Massive bursts of solar wind and magnetic fields that travel
-                  through space at incredible speeds!
-                </p>
-              </div>
-            </div>
-          </section>
-
-          <!-- Scene 9: Meet Earth -->
-          <section class="scene earth" data-scene="9">
-            <div class="scene-content">
-              <img
-                class="character"
-                src="Images/Characters/happy_earth-removebg-preview.png"
-                alt="Happy Earth"
-                onclick="characterSpeak(this, 'My magnetic field is like a superhero shield! 🛡️')"
-              />
-              <div class="speech-bubble">
-                <p>
-                  <strong
-                    >"Hi! I'm Earth! I have a special magnetic shield that
-                    protects me! 🛡️"</strong
-                  >
-                </p>
-              </div>
-              <div class="fun-fact">
-                <h3>🌍 Earth's Protection</h3>
-                <p>
-                  Earth's magnetic field extends 60,000 km into space and
-                  deflects most harmful solar particles!
-                </p>
-              </div>
-            </div>
-          </section>
-
-          <!-- Scene 10: Auroras -->
-          <section class="scene earth" data-scene="10">
-            <div class="aurora" id="aurora"></div>
-            <div class="scene-content">
-              <img
-                class="character"
-                src="Images/Characters/happy_earth-removebg-preview.png"
                 alt="Aurora Earth"
               />
-              <div class="speech-bubble">
+              <div class="speech-bubble warning">
                 <p>
-                  <strong
-                    >"When Solara's particles reach me, they create beautiful
-                    auroras! ✨"</strong
-                  >
+                  Other times, Solara blows big bubbles into space called coronal mass
+                  ejections, or CMEs. These can reach
+                  Earth and affect satellites, radios, and
+                  even power grids!
                 </p>
               </div>
-              <button
-                class="mood-btn"
-                onclick="changeAuroraColor()"
-                style="margin-top: 1rem"
-              >
-                Change Aurora Colors! 🌈
-              </button>
             </div>
           </section>
 
-          <!-- Scene 11: Space Weather Threats -->
-          <section class="scene earth" data-scene="11">
+          <!-- Scene 11 -->
+          <section class="scene space angry-tint" data-scene="13">
             <div class="scene-content">
               <img
+                id="cme-sun"
                 class="character"
-                src="Images/Characters/scared_earth-removebg-preview.png"
+                src="Images/Characters/sun_with_CMEs-removebg-preview.png"
                 alt="Worried Earth"
               />
               <div class="speech-bubble warning">
                 <p>
-                  <strong
-                    >"But strong solar storms can disrupt satellites and
-                    technology! ⚠️"</strong
-                  >
+                  Here comes a big one! Don’t worry, it’s all part of my space weather
                 </p>
               </div>
               <div style="display: flex; gap: 2rem; margin-top: 2rem">
@@ -381,24 +292,30 @@
                 </div>
                 <div class="fun-fact" style="flex: 1">⚡ Power Grid Risk</div>
               </div>
+              <!-- Single CTA for CMEs -->
+              <div style="margin-top: 1.5rem">
+                <button class="mood-btn" onclick="triggerCMEExplosion(this)">
+                  Coronal Mass Ejection
+                </button>
+              </div>
             </div>
           </section>
 
-          <!-- Scene 12: Space Station -->
-          <section class="scene earth" data-scene="12">
+          <!-- Scene 12 -->
+          <section class="scene space" data-scene="14">
             <div class="scene-content">
               <img
                 class="character"
-                src="Images/Characters/ISS_-removebg-preview.png"
+                src="Images/Characters/sun.png"
                 alt="ISS"
                 style="animation: character-float 2s ease-in-out infinite"
               />
               <div class="speech-bubble">
                 <p>
-                  <strong
-                    >"I'm the ISS! We astronauts monitor space weather carefully
-                    up here! 🚀"</strong
-                  >
+                  Even when calm, Solara is always
+                  breathing, sending a gentle wind of
+                  charged particles across space,
+                  that’s the solar wind.
                 </p>
               </div>
               <div class="fun-fact">
@@ -412,7 +329,7 @@
           </section>
 
           <!-- Scene 13: Aviation -->
-          <section class="scene ground" data-scene="13">
+          <section class="scene ground" data-scene="15">
             <div class="scene-content">
               <img
                 class="character"
@@ -421,10 +338,9 @@
               />
               <div class="speech-bubble">
                 <p>
-                  <strong
-                    >"As a pilot, space weather affects our GPS and radio
-                    communications! ✈️"</strong
-                  >
+                  I never stop moving! My wind
+                  keeps traveling, even when I’m
+                  feeling peaceful.
                 </p>
               </div>
               <div class="fun-fact">
@@ -438,7 +354,7 @@
           </section>
 
           <!-- Scene 14: Power Grid -->
-          <section class="scene ground" data-scene="14">
+          <section class="scene ground" data-scene="16">
             <div class="scene-content">
               <img
                 class="character"
@@ -449,8 +365,7 @@
               <div class="speech-bubble">
                 <p>
                   <strong
-                    >"I'm a power grid! Solar storms can cause blackouts! Click
-                    to see how! ⚡"</strong
+                    >Pop up facts: Space weather⚡"</strong
                   >
                 </p>
               </div>
@@ -464,8 +379,8 @@
             </div>
           </section>
 
-          <!-- Scene 15: Agriculture -->
-          <section class="scene ground" data-scene="15">
+          <!-- Scene 15 -->
+          <section class="scene ground" data-scene="17">
             <div class="scene-content">
               <img
                 class="character"
@@ -475,8 +390,7 @@
               <div class="speech-bubble">
                 <p>
                   <strong
-                    >"Even farming uses GPS! Space weather affects precision
-                    agriculture! 🚜"</strong
+                    >Sunspots photos 🚜"</strong
                   >
                 </p>
               </div>
@@ -490,8 +404,8 @@
             </div>
           </section>
 
-          <!-- Scene 16: Young Scientists -->
-          <section class="scene sun" data-scene="16">
+          <!-- Scene 16 -->
+          <section class="scene sun" data-scene="18">
             <div class="scene-content">
               <img
                 class="character"
@@ -501,10 +415,7 @@
               />
               <div class="speech-bubble">
                 <p>
-                  <strong
-                    >"Scientists like me study space weather to help everyone
-                    stay safe! 🔬⭐"</strong
-                  >
+                  Solar flares photos
                 </p>
               </div>
               <div class="fun-fact">
@@ -517,8 +428,1519 @@
             </div>
           </section>
 
+          <!-- Scene 17 -->
+          <section class="scene sun" data-scene="19">
+            <div class="scene-content">
+              <img
+                class="character"
+                src="Images/Characters/girl-removebg-preview.png"
+                alt="Scientist"
+                onclick="characterSpeak(this, 'Science is the key to understanding our universe! 🔬')"
+              />
+              <div class="speech-bubble">
+                <p>
+                  CMEs photos
+                </p>
+              </div>
+              <div class="fun-fact">
+                <h3>Space Weather Science</h3>
+                <p>
+                  NOAA monitors space weather 24/7 using satellites and
+                  ground-based instruments!
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <!-- Scene 18 -->
+          <section class="scene sun" data-scene="20">
+            <div class="scene-content">
+              <img
+                class="character"
+                src="Images/Characters/girl-removebg-preview.png"
+                alt="Scientist"
+                onclick="characterSpeak(this, 'Science is the key to understanding our universe! 🔬')"
+              />
+              <div class="speech-bubble">
+                <p>
+                  Solar wind photos
+                </p>
+              </div>
+              <div class="fun-fact">
+                <h3>Space Weather Science</h3>
+                <p>
+                  NOAA monitors space weather 24/7 using satellites and
+                  ground-based instruments!
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <!-- Scene 19 -->
+          <section class="scene sun" data-scene="21">
+            <div class="scene-content">
+              <img
+                class="character"
+                src="Images/Characters/girl-removebg-preview.png"
+                alt="Scientist"
+                onclick="characterSpeak(this, 'Science is the key to understanding our universe! 🔬')"
+              />
+              <div class="speech-bubble">
+                <p>
+                  When the sun sneezes or blow hard, it
+                  sends storms, and the storms travel
+                  through the space until they reach
+                  earth
+                </p>
+              </div>
+              <div class="fun-fact">
+                <h3>Space Weather Science</h3>
+                <p>
+                  NOAA monitors space weather 24/7 using satellites and
+                  ground-based instruments!
+                </p>
+              </div>
+            </div>
+          </section>
+
+
+          <!-- Scene 20 -->
+          <section class="scene sun" data-scene="22">
+            <div class="scene-content">
+              <img
+                class="character"
+                src="Images/Characters/girl-removebg-preview.png"
+                alt="Scientist"
+                onclick="characterSpeak(this, 'Science is the key to understanding our universe! 🔬')"
+              />
+              <div class="speech-bubble">
+                <p>
+                  The earth invisible shield works hard to protect us. Like an umbrella in the wind
+                </p>
+              </div>
+              <div class="fun-fact">
+                <h3>Space Weather Science</h3>
+                <p>
+                  NOAA monitors space weather 24/7 using satellites and
+                  ground-based instruments!
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <!-- Scene 21 -->
+          <section class="scene sun" data-scene="23">
+            <div class="scene-content">
+              <img
+                class="character"
+                src="Images/Characters/girl-removebg-preview.png"
+                alt="Scientist"
+                onclick="characterSpeak(this, 'Science is the key to understanding our universe! 🔬')"
+              />
+              <div class="speech-bubble">
+                <p>
+                  Hold on tight everyone! I'll protect you. That's a geomagetic storm
+                </p>
+              </div>
+              <div class="fun-fact">
+                <h3>Space Weather Science</h3>
+                <p>
+                  NOAA monitors space weather 24/7 using satellites and
+                  ground-based instruments!
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <!-- Scene 22 -->
+          <section class="scene sun" data-scene="24">
+            <div class="scene-content">
+              <img
+                class="character"
+                src="Images/Characters/girl-removebg-preview.png"
+                alt="Scientist"
+                onclick="characterSpeak(this, 'Science is the key to understanding our universe! 🔬')"
+              />
+              <div class="speech-bubble">
+                <p>
+                  Down on earth we’re safe, but in
+                  space and the technology, things
+                  get tricky
+                </p>
+              </div>
+              <div class="fun-fact">
+                <h3>Space Weather Science</h3>
+                <p>
+                  NOAA monitors space weather 24/7 using satellites and
+                  ground-based instruments!
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <!-- Scene 23 -->
+          <section class="scene sun" data-scene="25">
+            <div class="scene-content">
+              <img
+                class="character"
+                src="Images/Characters/girl-removebg-preview.png"
+                alt="Scientist"
+                onclick="characterSpeak(this, 'Science is the key to understanding our universe! 🔬')"
+              />
+              <div class="speech-bubble">
+                <p>
+                  Game
+                </p>
+              </div>
+              <div class="fun-fact">
+                <h3>Space Weather Science</h3>
+                <p>
+                  NOAA monitors space weather 24/7 using satellites and
+                  ground-based instruments!
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <!-- Scene 24 -->
+          <section class="scene sun" data-scene="26">
+            <div class="scene-content">
+              <img
+                class="character"
+                src="Images/Characters/girl-removebg-preview.png"
+                alt="Scientist"
+                onclick="characterSpeak(this, 'Science is the key to understanding our universe! 🔬')"
+              />
+              <div class="speech-bubble">
+                <p>
+                  pop up facts
+                </p>
+              </div>
+              <div class="fun-fact">
+                <h3>Space Weather Science</h3>
+                <p>
+                  NOAA monitors space weather 24/7 using satellites and
+                  ground-based instruments!
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <!-- Scene 25 -->
+          <section class="scene sun" data-scene="27">
+            <div class="scene-content">
+              <img
+                class="character"
+                src="Images/Characters/girl-removebg-preview.png"
+                alt="Scientist"
+                onclick="characterSpeak(this, 'Science is the key to understanding our universe! 🔬')"
+              />
+              <div class="speech-bubble">
+                <p>
+                  map
+                </p>
+              </div>
+              <div class="fun-fact">
+                <h3>Space Weather Science</h3>
+                <p>
+                  NOAA monitors space weather 24/7 using satellites and
+                  ground-based instruments!
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <!-- Scene 26 -->
+          <section class="scene ISS1" data-scene="28">
+            <div class="scene-content">
+              <img
+                class="character"
+                src="Images/Characters/girl-removebg-preview.png"
+                alt="Scientist"
+                onclick="characterSpeak(this, 'Science is the key to understanding our universe! 🔬')"
+              />
+              <div class="speech-bubble">
+                <p>
+                  What a view! Earth looks like a
+                  glowing jewel from up here. I never
+                  get tired of this sight
+                </p>
+              </div>
+              <div class="fun-fact">
+                <h3>Space Weather Science</h3>
+                <p>
+                  NOAA monitors space weather 24/7 using satellites and
+                  ground-based instruments!
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <!-- Scene 27 -->
+          <section class="scene ISS2" data-scene="29">
+            <div class="scene-content">
+              <img
+                class="character"
+                src="Images/Characters/girl-removebg-preview.png"
+                alt="Scientist"
+                onclick="characterSpeak(this, 'Science is the key to understanding our universe! 🔬')"
+              />
+              <div class="speech-bubble">
+                <p>
+                  hello
+                </p>
+              </div>
+              <div class="fun-fact">
+                <h3>Space Weather Science</h3>
+                <p>
+                  Fatima is a 35 yo Moroccan Astronaut,
+                  I she loves astronomy, and is on her
+                  first long-term mission on the ISS
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <!-- Scene 28 -->
+          <section class="scene ISS2" data-scene="30">
+            <div class="scene-content">
+              <img
+                class="character"
+                src="Images/Characters/girl-removebg-preview.png"
+                alt="Scientist"
+                onclick="characterSpeak(this, 'Science is the key to understanding our universe! 🔬')"
+              />
+              <div class="speech-bubble">
+                <p>
+                  Astronauts on the International Space Station orbit earth many times a day. But space weather can turn a calm day into a challenge
+                </p>
+              </div>
+              <div class="fun-fact">
+                <h3>Space Weather Science</h3>
+                <p>
+                  NOAA monitors space weather 24/7 using satellites and
+                  ground-based instruments!
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <!-- Scene 29 -->
+          <section class="scene ISS2" data-scene="31">
+            <div class="scene-content">
+              <img
+                class="character"
+                src="Images/Characters/girl-removebg-preview.png"
+                alt="Scientist"
+                onclick="characterSpeak(this, 'Science is the key to understanding our universe! 🔬')"
+              />
+              <div class="speech-bubble">
+                <p>
+                  Fatima, copy? A solar flare just erupted. ou need to move to the storm shelter, that's the safest place on the station
+                </p>
+              </div>
+              <div class="fun-fact">
+                <h3>Space Weather Science</h3>
+                <p>
+                  NOAA monitors space weather 24/7 using satellites and
+                  ground-based instruments!
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <!-- Scene 30 -->
+          <section class="scene ISS2" data-scene="32">
+            <div class="scene-content">
+              <img
+                class="character"
+                src="Images/Characters/girl-removebg-preview.png"
+                alt="Scientist"
+                onclick="characterSpeak(this, 'Science is the key to understanding our universe! 🔬')"
+              />
+              <div class="speech-bubble">
+                <p>
+                  Copy that, Mission Control. Heading there now!
+                </p>
+              </div>
+              <div class="fun-fact">
+                <p>
+                  NOAA monitors space weather 24/7 using satellites and
+                  ground-based instruments!
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <!-- Scene 31 -->
+          <section class="scene ISS2" data-scene="33">
+            <div class="scene-content">
+              <img
+                class="character"
+                src="Images/Characters/girl-removebg-preview.png"
+                alt="Scientist"
+                onclick="characterSpeak(this, 'Science is the key to understanding our universe! 🔬')"
+              />
+              <div class="speech-bubble">
+                <p>
+                  Uh oh, the way is cluttered! I need to get through quickly before thestorm hits.
+                </p>
+              </div>
+              <div class="fun-fact">
+                <h3>Space Weather Science</h3>
+                <p>
+                  Uh oh, the way is cluttered! I need to get through quickly before thestorm hits.
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <!-- Scene 32 -->
+          <section class="scene ISS2" data-scene="34">
+            <div class="scene-content">
+              <img
+                class="character"
+                src="Images/Characters/girl-removebg-preview.png"
+                alt="Scientist"
+                onclick="characterSpeak(this, 'Science is the key to understanding our universe! 🔬')"
+              />
+              <div class="speech-bubble">
+                <p>
+                  Game
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <!-- Scene 33 -->
+          <section class="scene shelter" data-scene="35">
+            <div class="scene-content">
+              <img
+                class="character"
+                src="Images/Characters/girl-removebg-preview.png"
+                alt="Scientist"
+                onclick="characterSpeak(this, 'Science is the key to understanding our universe! 🔬')"
+              />
+              <div class="speech-bubble">
+                <p>
+                  Phew! I made it to the shelter. The shields will protect me now.
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <!-- Scene 34 -->
+          <section class="scene shelter" data-scene="36">
+            <div class="scene-content">
+              <img
+                class="character"
+                src="Images/Characters/girl-removebg-preview.png"
+                alt="Scientist"
+                onclick="characterSpeak(this, 'Science is the key to understanding our universe! 🔬')"
+              />
+              <div class="speech-bubble">
+                <p>
+                  The storm has passed. Time to head back.
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <!-- Scene 35 -->
+          <section class="scene ISS2" data-scene="37">
+            <div class="scene-content">
+              <img
+                class="character"
+                src="Images/Characters/girl-removebg-preview.png"
+                alt="Scientist"
+                onclick="characterSpeak(this, 'Science is the key to understanding our universe! 🔬')"
+              />
+              <div class="speech-bubble">
+                <p>
+                  After the solar storm quiets down, astronauts can return to their work and enjoy the view again.
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <!-- Scene 36 -->
+          <section class="scene ISS1" data-scene="38">
+            <div class="scene-content">
+              <img
+                class="character"
+                src="Images/Characters/girl-removebg-preview.png"
+                alt="Scientist"
+                onclick="characterSpeak(this, 'Science is the key to understanding our universe! 🔬')"
+              />
+              <div class="speech-bubble">
+                <p>
+                  Look at Morocco… so beautiful, like a painting from space. I can even see the Atlas Mountains!”
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <!-- Scene 37 -->
+          <section class="scene ISS1" data-scene="39">
+            <div class="scene-content">
+              <img
+                class="character"
+                src="Images/Characters/girl-removebg-preview.png"
+                alt="Scientist"
+                onclick="characterSpeak(this, 'Science is the key to understanding our universe! 🔬')"
+              />
+              <div class="speech-bubble">
+                <p>
+                  From space, astronauts can see entire countries at once. Solar storms may cause trouble, but they can't hide earth's beauty.
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <!-- Scene 38 -->
+          <section class="scene space" data-scene="40">
+            <div class="scene-content">
+              <img
+                class="character"
+                src="Images/Characters/girl-removebg-preview.png"
+                alt="Scientist"
+                onclick="characterSpeak(this, 'Science is the key to understanding our universe! 🔬')"
+              />
+              <div class="speech-bubble">
+                <p>
+                  ISS protected
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <!-- Scene 39 -->
+          <section class="scene sun" data-scene="41">
+            <div class="scene-content">
+              <img
+                class="character"
+                src="Images/Characters/girl-removebg-preview.png"
+                alt="Scientist"
+                onclick="characterSpeak(this, 'Science is the key to understanding our universe! 🔬')"
+              />
+              <div class="speech-bubble">
+                <p>
+                  pop up facts
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <!-- Scene 40 -->
+          <section class="scene sun" data-scene="42">
+            <div class="scene-content">
+              <img
+                class="character"
+                src="Images/Characters/girl-removebg-preview.png"
+                alt="Scientist"
+                onclick="characterSpeak(this, 'Science is the key to understanding our universe! 🔬')"
+              />
+              <div class="speech-bubble">
+                <p>
+                  The Sun is so powerful. It gives us
+                  light and warmth… but it can also
+                  send storms across space. What an
+                  incredible star
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <!-- Scene 41 -->
+          <section class="scene sun" data-scene="43">
+            <div class="scene-content">
+              <img
+                class="character"
+                src="Images/Characters/girl-removebg-preview.png"
+                alt="Scientist"
+                onclick="characterSpeak(this, 'Science is the key to understanding our universe! 🔬')"
+              />
+              <div class="speech-bubble">
+                <p>
+                  Soalr storms and satellites
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <!-- Scene 42 -->
+          <section class="scene sun" data-scene="44">
+            <div class="scene-content">
+              <img
+                class="character"
+                src="Images/Characters/girl-removebg-preview.png"
+                alt="Scientist"
+                onclick="characterSpeak(this, 'Science is the key to understanding our universe! 🔬')"
+              />
+              <div class="speech-bubble">
+                <p>
+                  Map
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <!-- Scene 43 -->
+          <section class="scene cockpit" data-scene="45">
+            <div class="scene-content">
+              <img
+                class="character"
+                src="Images/Characters/girl-removebg-preview.png"
+                alt="Scientist"
+                onclick="characterSpeak(this, 'Science is the key to understanding our universe! 🔬')"
+              />
+              <div class="speech-bubble">
+                <p>
+                  Smooth flight today. We’re
+                  approaching the Atlas range. Soon
+                  we’ll begin our descent into
+                  Casablanca.
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <!-- Scene 44 -->
+          <section class="scene cockpit" data-scene="46">
+            <div class="scene-content">
+              <img
+                class="character"
+                src="Images/Characters/girl-removebg-preview.png"
+                alt="Scientist"
+                onclick="characterSpeak(this, 'Science is the key to understanding our universe! 🔬')"
+              />
+              <div class="speech-bubble">
+                <p>
+                  Pilots rely on clear radio signals from
+                  airport towers to guide them safely,
+                  especially when landing
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <!-- Scene 45 -->
+          <section class="scene tower" data-scene="47">
+            <div class="scene-content">
+              <img
+                class="character"
+                src="Images/Characters/girl-removebg-preview.png"
+                alt="Scientist"
+                onclick="characterSpeak(this, 'Science is the key to understanding our universe! 🔬')"
+              />
+              <div class="speech-bubble">
+                <p>
+                  Flight 221, do you copy? Preparing you for descent…
+                </p>
+              </div>
+            </div>
+          </section>
+          <!-- Scene 46 -->
+          <section class="scene cockpit" data-scene="48">
+            <div class="scene-content">
+              <img
+                class="character"
+                src="Images/Characters/girl-removebg-preview.png"
+                alt="Scientist"
+                onclick="characterSpeak(this, 'Science is the key to understanding our universe! 🔬')"
+              />
+              <div class="speech-bubble">
+                <p>
+                  What? Only static? I can't hear the tower clearly!
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <!-- Scene 47 -->
+          <section class="scene space" data-scene="49">
+            <div class="scene-content">
+              <img
+                class="character"
+                src="Images/Characters/girl-removebg-preview.png"
+                alt="Scientist"
+                onclick="characterSpeak(this, 'Science is the key to understanding our universe! 🔬')"
+              />
+              <div class="speech-bubble">
+                <p>
+                  Solar storms can scramble radio waves as they pass through earth's atmosphere, aking it hard for pilots and towers to talk to each other
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <!-- Scene 48 -->
+          <section class="scene space" data-scene="50">
+            <div class="scene-content">
+              <img
+                class="character"
+                src="Images/Characters/girl-removebg-preview.png"
+                alt="Scientist"
+                onclick="characterSpeak(this, 'Science is the key to understanding our universe! 🔬')"
+              />
+              <div class="speech-bubble">
+                <p>
+                  Hehe… my stormy particles shaking your signals!
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <!-- Scene 49 -->
+          <section class="scene cockpit" data-scene="51">
+            <div class="scene-content">
+              <img
+                class="character"
+                src="Images/Characters/girl-removebg-preview.png"
+                alt="Scientist"
+                onclick="characterSpeak(this, 'Science is the key to understanding our universe! 🔬')"
+              />
+              <div class="speech-bubble">
+                <p>
+                  I need those instructions to land
+                  safely. We must find a clear
+                  channel
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <!-- Scene 50 -->
+          <section class="scene tower" data-scene="52">
+            <div class="scene-content">
+              <img
+                class="character"
+                src="Images/Characters/girl-removebg-preview.png"
+                alt="Scientist"
+                onclick="characterSpeak(this, 'Science is the key to understanding our universe! 🔬')"
+              />
+              <div class="speech-bubble">
+                <p>
+                  game
+                </p>
+              </div>
+            </div>
+          </section>
+
+
+          <!-- Scene 51 -->
+          <section class="scene sun" data-scene="53">
+            <div class="scene-content">
+              <img
+                class="character"
+                src="Images/Characters/girl-removebg-preview.png"
+                alt="Scientist"
+                onclick="characterSpeak(this, 'Science is the key to understanding our universe! 🔬')"
+              />
+              <div class="speech-bubble">
+                <p>
+                  Flight 221, you’re clear for
+                  descent. Adjust heading by 10
+                  degrees. Welcome home.
+                </p>
+              </div>
+            </div>
+          </section>
+
+
+
+          <!-- Scene 52 -->
+          <section class="scene sun" data-scene="54">
+            <div class="scene-content">
+              <img
+                class="character"
+                src="Images/Characters/girl-removebg-preview.png"
+                alt="Scientist"
+                onclick="characterSpeak(this, 'Science is the key to understanding our universe! 🔬')"
+              />
+              <div class="speech-bubble">
+                <p>
+                  Copy that, Tower! Loud and clear
+                  now. Preparing to descend over the
+                  Atlas. Thank you, copilots!” (winks at
+                  the kids
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <!-- Scene 53 -->
+          <section class="scene sun" data-scene="55">
+            <div class="scene-content">
+              <img
+                class="character"
+                src="Images/Characters/girl-removebg-preview.png"
+                alt="Scientist"
+                onclick="characterSpeak(this, 'Science is the key to understanding our universe! 🔬')"
+              />
+              <div class="speech-bubble">
+                <p>
+                  map
+                </p>
+              </div>
+            </div>
+          </section>
+
+
+          <!-- Scene 54 -->
+          <section class="scene sun" data-scene="56">
+            <div class="scene-content">
+              <img
+                class="character"
+                src="Images/Characters/girl-removebg-preview.png"
+                alt="Scientist"
+                onclick="characterSpeak(this, 'Science is the key to understanding our universe! 🔬')"
+              />
+              <div class="speech-bubble">
+                <p>
+                  Ah, these olives are almost ready, with
+                  my GPS I can guide the tractor to
+                  water ad care for each raw of trees
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <!-- Scene 55 -->
+          <section class="scene sun" data-scene="57">
+            <div class="scene-content">
+              <img
+                class="character"
+                src="Images/Characters/girl-removebg-preview.png"
+                alt="Scientist"
+                onclick="characterSpeak(this, 'Science is the key to understanding our universe! 🔬')"
+              />
+              <div class="speech-bubble">
+                <p>
+                  That way the harvest will be plenty, and we'll press golden oil for everyone's table
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <!-- Scene 56 -->
+          <section class="scene sun" data-scene="58">
+            <div class="scene-content">
+              <img
+                class="character"
+                src="Images/Characters/girl-removebg-preview.png"
+                alt="Scientist"
+                onclick="characterSpeak(this, 'Science is the key to understanding our universe! 🔬')"
+              />
+              <div class="speech-bubble">
+                <p>
+                  Huh! That's odd ... the sceen says left but the field is straight ahead. What's happenig ?
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <!-- Scene 57 -->
+          <section class="scene sun" data-scene="59">
+            <div class="scene-content">
+              <img
+                class="character"
+                src="Images/Characters/girl-removebg-preview.png"
+                alt="Scientist"
+                onclick="characterSpeak(this, 'Science is the key to understanding our universe! 🔬')"
+              />
+              <div class="speech-bubble">
+                <p>
+                  My strom partciles are tricking the satellite hehe
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <!-- Scene 58 -->
+          <section class="scene sun" data-scene="60">
+            <div class="scene-content">
+              <img
+                class="character"
+                src="Images/Characters/girl-removebg-preview.png"
+                alt="Scientist"
+                onclick="characterSpeak(this, 'Science is the key to understanding our universe! 🔬')"
+              />
+              <div class="speech-bubble">
+                <p>
+                  Whooaa! The sun’s storm is making
+                  my signal fuzzy! I can’t send clear
+                  directions to Ahmed’s Tractor
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <!-- Scene 59 -->
+          <section class="scene sun" data-scene="61">
+            <div class="scene-content">
+              <img
+                class="character"
+                src="Images/Characters/girl-removebg-preview.png"
+                alt="Scientist"
+                onclick="characterSpeak(this, 'Science is the key to understanding our universe! 🔬')"
+              />
+              <div class="speech-bubble">
+                <p>
+                  If this keeps up, I might miss
+                watering whole rows of trees. And if
+                olives go dry now, the harvest will be
+                ruined. How will we make our olive oil
+                then
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <!-- Scene 60 -->
+          <section class="scene sun" data-scene="62">
+            <div class="scene-content">
+              <img
+                class="character"
+                src="Images/Characters/girl-removebg-preview.png"
+                alt="Scientist"
+                onclick="characterSpeak(this, 'Science is the key to understanding our universe! 🔬')"
+              />
+              <div class="speech-bubble">
+                <p>
+                  game
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <!-- Scene 61 -->
+          <section class="scene sun" data-scene="63">
+            <div class="scene-content">
+              <img
+                class="character"
+                src="Images/Characters/girl-removebg-preview.png"
+                alt="Scientist"
+                onclick="characterSpeak(this, 'Science is the key to understanding our universe! 🔬')"
+              />
+              <div class="speech-bubble">
+                <p>
+                  Ahhh, much better !! signal strong again
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <!-- Scene 62 -->
+          <section class="scene sun" data-scene="64">
+            <div class="scene-content">
+              <img
+                class="character"
+                src="Images/Characters/girl-removebg-preview.png"
+                alt="Scientist"
+                onclick="characterSpeak(this, 'Science is the key to understanding our universe! 🔬')"
+              />
+              <div class="speech-bubble">
+                <p>
+                  pop up facts
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <!-- Scene 63 -->
+          <section class="scene sun" data-scene="65">
+            <div class="scene-content">
+              <img
+                class="character"
+                src="Images/Characters/girl-removebg-preview.png"
+                alt="Scientist"
+                onclick="characterSpeak(this, 'Science is the key to understanding our universe! 🔬')"
+              />
+              <div class="speech-bubble">
+                <p>
+                  map
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <!-- Scene 64 -->
+          <section class="scene sun" data-scene="66">
+            <div class="scene-content">
+              <img
+                class="character"
+                src="Images/Characters/girl-removebg-preview.png"
+                alt="Scientist"
+                onclick="characterSpeak(this, 'Science is the key to understanding our universe! 🔬')"
+              />
+              <div class="speech-bubble">
+                <p>
+                  Hi! I’m Karim, a power grid worker. My
+                  job is to make sure lights, hospitals,
+                  schools, and homes always have
+                  electricity.
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <!-- Scene 65 -->
+          <section class="scene sun" data-scene="67">
+            <div class="scene-content">
+              <img
+                class="character"
+                src="Images/Characters/girl-removebg-preview.png"
+                alt="Scientist"
+                onclick="characterSpeak(this, 'Science is the key to understanding our universe! 🔬')"
+              />
+              <div class="speech-bubble">
+                <p>
+                  uh? The system shows unusual
+                  surges. The Sun must be sending a
+                  geomagnetic storm our way!
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <!-- Scene 66 -->
+          <section class="scene sun" data-scene="68">
+            <div class="scene-content">
+              <img
+                class="character"
+                src="Images/Characters/girl-removebg-preview.png"
+                alt="Scientist"
+                onclick="characterSpeak(this, 'Science is the key to understanding our universe! 🔬')"
+              />
+              <div class="speech-bubble">
+                <p>
+                  image of light flcikering
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <!-- Scene 67 -->
+          <section class="scene sun" data-scene="69">
+            <div class="scene-content">
+              <img
+                class="character"
+                src="Images/Characters/girl-removebg-preview.png"
+                alt="Scientist"
+                onclick="characterSpeak(this, 'Science is the key to understanding our universe! 🔬')"
+              />
+              <div class="speech-bubble">
+                <p>
+                  If I don’t redirect the power, whole
+                  neighborhoods might lose electricity.
+                  Can you help me balance the grid?
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <!-- Scene 68 -->
+          <section class="scene sun" data-scene="70">
+            <div class="scene-content">
+              <img
+                class="character"
+                src="Images/Characters/girl-removebg-preview.png"
+                alt="Scientist"
+                onclick="characterSpeak(this, 'Science is the key to understanding our universe! 🔬')"
+              />
+              <div class="speech-bubble">
+                <p>
+                  
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <!-- Scene 69 -->
+          <section class="scene sun" data-scene="71">
+            <div class="scene-content">
+              <img
+                class="character"
+                src="Images/Characters/girl-removebg-preview.png"
+                alt="Scientist"
+                onclick="characterSpeak(this, 'Science is the key to understanding our universe! 🔬')"
+              />
+              <div class="speech-bubble">
+                <p>
+                  Mini game
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <!-- Scene 70 -->
+          <section class="scene sun" data-scene="72">
+            <div class="scene-content">
+              <img
+                class="character"
+                src="Images/Characters/girl-removebg-preview.png"
+                alt="Scientist"
+                onclick="characterSpeak(this, 'Science is the key to understanding our universe! 🔬')"
+              />
+              <div class="speech-bubble">
+                <p>
+                  pop up fact
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <!-- Scene  -->
+          <section class="scene sun" data-scene="73">
+            <div class="scene-content">
+              <img
+                class="character"
+                src="Images/Characters/girl-removebg-preview.png"
+                alt="Scientist"
+                onclick="characterSpeak(this, 'Science is the key to understanding our universe! 🔬')"
+              />
+              <div class="speech-bubble">
+                <p>
+                  
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <!-- Scene 71 -->
+          <section class="scene sun" data-scene="74">
+            <div class="scene-content">
+              <img
+                class="character"
+                src="Images/Characters/girl-removebg-preview.png"
+                alt="Scientist"
+                onclick="characterSpeak(this, 'Science is the key to understanding our universe! 🔬')"
+              />
+              <div class="speech-bubble">
+                <p>
+                  Engineers and scientists work
+                  together to keep our power safe from
+                  solar storms.
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <!-- Scene 72 -->
+          <section class="scene sun" data-scene="75">
+            <div class="scene-content">
+              <img
+                class="character"
+                src="Images/Characters/girl-removebg-preview.png"
+                alt="Scientist"
+                onclick="characterSpeak(this, 'Science is the key to understanding our universe! 🔬')"
+              />
+              <div class="speech-bubble">
+                <p>
+                  pop up facts
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <!-- Scene 73 -->
+          <section class="scene sun" data-scene="76">
+            <div class="scene-content">
+              <img
+                class="character"
+                src="Images/Characters/girl-removebg-preview.png"
+                alt="Scientist"
+                onclick="characterSpeak(this, 'Science is the key to understanding our universe! 🔬')"
+              />
+              <div class="speech-bubble">
+                <p>
+                  Amina! Are you at sea again? It looks beautiful out there
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <!-- Scene 74 -->
+          <section class="scene sun" data-scene="77">
+            <div class="scene-content">
+              <img
+                class="character"
+                src="Images/Characters/girl-removebg-preview.png"
+                alt="Scientist"
+                onclick="characterSpeak(this, 'Science is the key to understanding our universe! 🔬')"
+              />
+              <div class="speech-bubble">
+                <p>
+                  Yes, I'm setting my nets. And you? Still keeping all of the Morocco lights on, Karim?
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <!-- Scene 75 -->
+          <section class="scene sun" data-scene="78">
+            <div class="scene-content">
+              <img
+                class="character"
+                src="Images/Characters/girl-removebg-preview.png"
+                alt="Scientist"
+                onclick="characterSpeak(this, 'Science is the key to understanding our universe! 🔬')"
+              />
+              <div class="speech-bubble">
+                <p>
+                  You know me — if the
+                  power goes out, the whole city
+                  calls me first!
+                </p>
+              </div>
+            </div>
+          </section>
+          <!-- Scene 76 -->
+          <section class="scene sun" data-scene="79">
+            <div class="scene-content">
+              <img
+                class="character"
+                src="Images/Characters/girl-removebg-preview.png"
+                alt="Scientist"
+                onclick="characterSpeak(this, 'Science is the key to understanding our universe! 🔬')"
+              />
+              <div class="speech-bubble">
+                <p>
+                  Wait… my GPS says I’m heading
+                  east, but the sun is right in front of
+                  me. That can
+                  ’t be right
+                  and my monitors are glowing red too.
+                  Looks like the Sun is in one of its
+                  stormy moods again.
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <!-- Scene 77 -->
+          <section class="scene sun" data-scene="80">
+            <div class="scene-content">
+              <img
+                class="character"
+                src="Images/Characters/girl-removebg-preview.png"
+                alt="Scientist"
+                onclick="characterSpeak(this, 'Science is the key to understanding our universe! 🔬')"
+              />
+              <div class="speech-bubble">
+                <p>
+                  Oh no, not today! How will I find my way back?
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <!-- Scene 78 -->
+          <section class="scene sun" data-scene="81">
+            <div class="scene-content">
+              <img
+                class="character"
+                src="Images/Characters/girl-removebg-preview.png"
+                alt="Scientist"
+                onclick="characterSpeak(this, 'Science is the key to understanding our universe! 🔬')"
+              />
+              <div class="speech-bubble">
+                <p>
+                  game
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <!-- Scene 79 -->
+          <section class="scene sun" data-scene="82">
+            <div class="scene-content">
+              <img
+                class="character"
+                src="Images/Characters/girl-removebg-preview.png"
+                alt="Scientist"
+                onclick="characterSpeak(this, 'Science is the key to understanding our universe! 🔬')"
+              />
+              <div class="speech-bubble">
+                <p>
+                  Land! I made it back safely. Thanks to you
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <!-- Scene 80 -->
+          <section class="scene sun" data-scene="83">
+            <div class="scene-content">
+              <img
+                class="character"
+                src="Images/Characters/girl-removebg-preview.png"
+                alt="Scientist"
+                onclick="characterSpeak(this, 'Science is the key to understanding our universe! 🔬')"
+              />
+              <div class="speech-bubble">
+                <p>
+                  pop up fact
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <!-- Scene 81 -->
+          <section class="scene sun" data-scene="84">
+            <div class="scene-content">
+              <img
+                class="character"
+                src="Images/Characters/girl-removebg-preview.png"
+                alt="Scientist"
+                onclick="characterSpeak(this, 'Science is the key to understanding our universe! 🔬')"
+              />
+              <div class="speech-bubble">
+                <p>
+                  Amina! Are you at sea again? It looks beautiful out there
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <!-- Scene 82 -->
+          <section class="scene sun" data-scene="85">
+            <div class="scene-content">
+              <img
+                class="character"
+                src="Images/Characters/girl-removebg-preview.png"
+                alt="Scientist"
+                onclick="characterSpeak(this, 'Science is the key to understanding our universe! 🔬')"
+              />
+              <div class="speech-bubble">
+                <p>
+                  Papa, look the sky is alive! It's painting tself with colors!
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <!-- Scene 83 -->
+          <section class="scene sun" data-scene="86">
+            <div class="scene-content">
+              <img
+                class="character"
+                src="Images/Characters/girl-removebg-preview.png"
+                alt="Scientist"
+                onclick="characterSpeak(this, 'Science is the key to understanding our universe! 🔬')"
+              />
+              <div class="speech-bubble">
+                <p>
+                  That’s aurora, my little one. A
+                  reminder that the sun is powerful
+                  and wonderful
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <!-- Scene 84 -->
+          <section class="scene sun" data-scene="87">
+            <div class="scene-content">
+              <img
+                class="character"
+                src="Images/Characters/girl-removebg-preview.png"
+                alt="Scientist"
+                onclick="characterSpeak(this, 'Science is the key to understanding our universe! 🔬')"
+              />
+              <div class="speech-bubble">
+                <p>
+                  game
+                </p>
+              </div>
+            </div>
+          </section>
+
+
+          <!-- Scene 85 -->
+          <section class="scene sun" data-scene="88">
+            <div class="scene-content">
+              <img
+                class="character"
+                src="Images/Characters/girl-removebg-preview.png"
+                alt="Scientist"
+                onclick="characterSpeak(this, 'Science is the key to understanding our universe! 🔬')"
+              />
+              <div class="speech-bubble">
+                <p>
+                  pop up fact
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <!-- Scene  -->
+          <section class="scene sun" data-scene="89">
+            <div class="scene-content">
+              <img
+                class="character"
+                src="Images/Characters/girl-removebg-preview.png"
+                alt="Scientist"
+                onclick="characterSpeak(this, 'Science is the key to understanding our universe! 🔬')"
+              />
+              <div class="speech-bubble">
+                <p>
+                  
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <!-- Scene 86 -->
+          <section class="scene sun" data-scene="90">
+            <div class="scene-content">
+              <img
+                class="character"
+                src="Images/Characters/girl-removebg-preview.png"
+                alt="Scientist"
+                onclick="characterSpeak(this, 'Science is the key to understanding our universe! 🔬')"
+              />
+              <div class="speech-bubble">
+                <p>
+                  The lights are so beautiful .. but I
+                  wonder, how do we knwo when the
+                  sun is angry or calm ? Who
+                  watches the storms before they
+                  reach us ?
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <!-- Scene 87 -->
+          <section class="scene sun" data-scene="91">
+            <div class="scene-content">
+              <img
+                class="character"
+                src="Images/Characters/girl-removebg-preview.png"
+                alt="Scientist"
+                onclick="characterSpeak(this, 'Science is the key to understanding our universe! 🔬')"
+              />
+              <div class="speech-bubble">
+                <p>
+                  Ah, great question, Ahmed, I may be
+                  far away, but many eyes are on me.
+                  Let me introduce you to my
+                  watchers, the satellites!
+                </p>
+              </div>
+            </div>
+          </section>
+
+
+          <!-- Scene 88 -->
+          <section class="scene sun" data-scene="92">
+            <div class="scene-content">
+              <img
+                class="character"
+                src="Images/Characters/girl-removebg-preview.png"
+                alt="Scientist"
+                onclick="characterSpeak(this, 'Science is the key to understanding our universe! 🔬')"
+              />
+              <div class="speech-bubble">
+                <p>
+                  PArker Solar Probe: I’m parker I fly
+                  colser to the Sun than anyone else. I
+                  feel the heat and measure the
+                  particles up close. I’m the brave
+                  explorer!
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <!-- Scene 89 -->
+          <section class="scene sun">
+            <div class="scene-content">
+              <img
+                class="character"
+                src="Images/Characters/girl-removebg-preview.png"
+                alt="Scientist"
+                onclick="characterSpeak(this, 'Science is the key to understanding our universe! 🔬')"
+              />
+              <div class="speech-bubble">
+                <p>
+                  I’m SOHO. For almost 30 years, I’ve
+                  watcher the Sun day and night. I spot
+                  flares and big eruptions before they
+                  reach earth. I’m the wse gardian
+                </p>
+              </div>
+            </div>
+          </section>
+          <!-- Scene 90 -->
+          <section class="scene sun">
+            <div class="scene-content">
+              <img
+                class="character"
+                src="Images/Characters/girl-removebg-preview.png"
+                alt="Scientist"
+                onclick="characterSpeak(this, 'Science is the key to understanding our universe! 🔬')"
+              />
+              <div class="speech-bubble">
+                <p>
+                  I'm SDO, the photographer! I take pictures of the sun every second, in many colors our eyes can't see. I turn sceince into art
+                </p>
+              </div>
+            </div>
+          </section>
+          <!-- Scene 91 -->
+          <section class="scene sun">
+            <div class="scene-content">
+              <img
+                class="character"
+                src="Images/Characters/girl-removebg-preview.png"
+                alt="Scientist"
+                onclick="characterSpeak(this, 'Science is the key to understanding our universe! 🔬')"
+              />
+              <div class="speech-bubble">
+                <p>
+                  and I'm DSCOVR. I stand between the Sun and earth, awarning when solar system storms are coming. I'm the lookout
+                </p>
+              </div>
+            </div>
+          </section>
+          <!-- Scene 92 -->
+          <section class="scene sun">
+            <div class="scene-content">
+              <img
+                class="character"
+                src="Images/Characters/girl-removebg-preview.png"
+                alt="Scientist"
+                onclick="characterSpeak(this, 'Science is the key to understanding our universe! 🔬')"
+              />
+              <div class="speech-bubble">
+                <p>
+                  Exactly Ahmed. My moods are strong, but with satellites and scientists, people can prepare. and one day, maybe you'll join their teams
+                </p>
+              </div>
+            </div>
+          </section>
+
+
+
+          
+
+
+
+
+
+
+
+
+
+
+
+          
+
           <!-- Scene 17: Global Network -->
-          <section class="scene earth" data-scene="17">
+          <section class="scene earth">
             <div class="scene-content">
               <div style="display: flex; gap: 2rem; margin-bottom: 2rem">
                 <img
@@ -543,7 +1965,7 @@
               <div class="speech-bubble">
                 <p>
                   <strong
-                    >"Space weather monitoring is a global effort! 🌍"</strong
+                    >CMEs</strong
                   >
                 </p>
               </div>
@@ -557,8 +1979,39 @@
             </div>
           </section>
 
-          <!-- Scene 18: Completion -->
-          <section class="scene space celebration" data-scene="18">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          <!-- Scene 18-->
+          <section class="scene space celebration">
             <div class="fireworks" id="fireworks"></div>
             <div class="scene-content">
               <div class="certificate">

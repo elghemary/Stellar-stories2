@@ -457,60 +457,100 @@ body {
 }
 
 /* Scene Positioning */
-.scenes-container.scene-1 {
-  transform: translateX(0%);
-}
-.scenes-container.scene-2 {
-  transform: translateX(-100%);
-}
-.scenes-container.scene-3 {
-  transform: translateX(-200%);
-}
-.scenes-container.scene-4 {
-  transform: translateX(-300%);
-}
-.scenes-container.scene-5 {
-  transform: translateX(-400%);
-}
-.scenes-container.scene-6 {
-  transform: translateX(-500%);
-}
-.scenes-container.scene-7 {
-  transform: translateX(-600%);
-}
-.scenes-container.scene-8 {
-  transform: translateX(-700%);
-}
-.scenes-container.scene-9 {
-  transform: translateX(-800%);
-}
-.scenes-container.scene-10 {
-  transform: translateX(-900%);
-}
-.scenes-container.scene-11 {
-  transform: translateX(-1000%);
-}
-.scenes-container.scene-12 {
-  transform: translateX(-1100%);
-}
-.scenes-container.scene-13 {
-  transform: translateX(-1200%);
-}
-.scenes-container.scene-14 {
-  transform: translateX(-1300%);
-}
-.scenes-container.scene-15 {
-  transform: translateX(-1400%);
-}
-.scenes-container.scene-16 {
-  transform: translateX(-1500%);
-}
-.scenes-container.scene-17 {
-  transform: translateX(-1600%);
-}
-.scenes-container.scene-18 {
-  transform: translateX(-1700%);
-}
+.scenes-container.scene-1  { transform: translateX(0%); }
+.scenes-container.scene-2  { transform: translateX(-100%); }
+.scenes-container.scene-3  { transform: translateX(-200%); }
+.scenes-container.scene-4  { transform: translateX(-300%); }
+.scenes-container.scene-5  { transform: translateX(-400%); }
+.scenes-container.scene-6  { transform: translateX(-500%); }
+.scenes-container.scene-7  { transform: translateX(-600%); }
+.scenes-container.scene-8  { transform: translateX(-700%); }
+.scenes-container.scene-9  { transform: translateX(-800%); }
+.scenes-container.scene-10 { transform: translateX(-900%); }
+.scenes-container.scene-11 { transform: translateX(-1000%); }
+.scenes-container.scene-12 { transform: translateX(-1100%); }
+.scenes-container.scene-13 { transform: translateX(-1200%); }
+.scenes-container.scene-14 { transform: translateX(-1300%); }
+.scenes-container.scene-15 { transform: translateX(-1400%); }
+.scenes-container.scene-16 { transform: translateX(-1500%); }
+.scenes-container.scene-17 { transform: translateX(-1600%); }
+.scenes-container.scene-18 { transform: translateX(-1700%); }
+.scenes-container.scene-19 { transform: translateX(-1800%); }
+.scenes-container.scene-20 { transform: translateX(-1900%); }
+.scenes-container.scene-21 { transform: translateX(-2000%); }
+.scenes-container.scene-22 { transform: translateX(-2100%); }
+.scenes-container.scene-23 { transform: translateX(-2200%); }
+.scenes-container.scene-24 { transform: translateX(-2300%); }
+.scenes-container.scene-25 { transform: translateX(-2400%); }
+.scenes-container.scene-26 { transform: translateX(-2500%); }
+.scenes-container.scene-27 { transform: translateX(-2600%); }
+.scenes-container.scene-28 { transform: translateX(-2700%); }
+.scenes-container.scene-29 { transform: translateX(-2800%); }
+.scenes-container.scene-30 { transform: translateX(-2900%); }
+.scenes-container.scene-31 { transform: translateX(-3000%); }
+.scenes-container.scene-32 { transform: translateX(-3100%); }
+.scenes-container.scene-33 { transform: translateX(-3200%); }
+.scenes-container.scene-34 { transform: translateX(-3300%); }
+.scenes-container.scene-35 { transform: translateX(-3400%); }
+.scenes-container.scene-36 { transform: translateX(-3500%); }
+.scenes-container.scene-37 { transform: translateX(-3600%); }
+.scenes-container.scene-38 { transform: translateX(-3700%); }
+.scenes-container.scene-39 { transform: translateX(-3800%); }
+.scenes-container.scene-40 { transform: translateX(-3900%); }
+.scenes-container.scene-41 { transform: translateX(-4000%); }
+.scenes-container.scene-42 { transform: translateX(-4100%); }
+.scenes-container.scene-43 { transform: translateX(-4200%); }
+.scenes-container.scene-44 { transform: translateX(-4300%); }
+.scenes-container.scene-45 { transform: translateX(-4400%); }
+.scenes-container.scene-46 { transform: translateX(-4500%); }
+.scenes-container.scene-47 { transform: translateX(-4600%); }
+.scenes-container.scene-48 { transform: translateX(-4700%); }
+.scenes-container.scene-49 { transform: translateX(-4800%); }
+.scenes-container.scene-50 { transform: translateX(-4900%); }
+.scenes-container.scene-51 { transform: translateX(-5000%); }
+.scenes-container.scene-52 { transform: translateX(-5100%); }
+.scenes-container.scene-53 { transform: translateX(-5200%); }
+.scenes-container.scene-54 { transform: translateX(-5300%); }
+.scenes-container.scene-55 { transform: translateX(-5400%); }
+.scenes-container.scene-56 { transform: translateX(-5500%); }
+.scenes-container.scene-57 { transform: translateX(-5600%); }
+.scenes-container.scene-58 { transform: translateX(-5700%); }
+.scenes-container.scene-59 { transform: translateX(-5800%); }
+.scenes-container.scene-60 { transform: translateX(-5900%); }
+.scenes-container.scene-61 { transform: translateX(-6000%); }
+.scenes-container.scene-62 { transform: translateX(-6100%); }
+.scenes-container.scene-63 { transform: translateX(-6200%); }
+.scenes-container.scene-64 { transform: translateX(-6300%); }
+.scenes-container.scene-65 { transform: translateX(-6400%); }
+.scenes-container.scene-66 { transform: translateX(-6500%); }
+.scenes-container.scene-67 { transform: translateX(-6600%); }
+.scenes-container.scene-68 { transform: translateX(-6700%); }
+.scenes-container.scene-69 { transform: translateX(-6800%); }
+.scenes-container.scene-70 { transform: translateX(-6900%); }
+.scenes-container.scene-71 { transform: translateX(-7000%); }
+.scenes-container.scene-72 { transform: translateX(-7100%); }
+.scenes-container.scene-73 { transform: translateX(-7200%); }
+.scenes-container.scene-74 { transform: translateX(-7300%); }
+.scenes-container.scene-75 { transform: translateX(-7400%); }
+.scenes-container.scene-76 { transform: translateX(-7500%); }
+.scenes-container.scene-77 { transform: translateX(-7600%); }
+.scenes-container.scene-78 { transform: translateX(-7700%); }
+.scenes-container.scene-79 { transform: translateX(-7800%); }
+.scenes-container.scene-80 { transform: translateX(-7900%); }
+.scenes-container.scene-81 { transform: translateX(-8000%); }
+.scenes-container.scene-82 { transform: translateX(-8100%); }
+.scenes-container.scene-83 { transform: translateX(-8200%); }
+.scenes-container.scene-84 { transform: translateX(-8300%); }
+.scenes-container.scene-85 { transform: translateX(-8400%); }
+.scenes-container.scene-86 { transform: translateX(-8500%); }
+.scenes-container.scene-87 { transform: translateX(-8600%); }
+.scenes-container.scene-88 { transform: translateX(-8700%); }
+.scenes-container.scene-89 { transform: translateX(-8800%); }
+.scenes-container.scene-90 { transform: translateX(-8900%); }
+.scenes-container.scene-91 { transform: translateX(-9000%); }
+.scenes-container.scene-92 { transform: translateX(-9100%); }
+
+
 
 .scene {
   min-width: 100vw;
@@ -600,6 +640,16 @@ body {
   animation: title-glow 2s ease-in-out infinite;
 }
 
+/* Scene 1 stronger layout tweaks: move title up more, enlarge it slightly, and lower Start button */
+#scene-1 .scene-title {
+  transform: translateY(-18px);
+  font-size: 3rem; /* slightly larger for emphasis */
+}
+
+#scene-1 .nav-btn {
+  transform: translateY(1cm);
+}
+
 /* Fun Fact Cards */
 .fun-fact {
   background: rgba(255, 255, 255, 0.1);
@@ -678,6 +728,40 @@ body {
   pointer-events: none;
 }
 
+/* CME Explosion burst (appears from the sun character and expands outward) */
+.cme-burst {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: radial-gradient(circle at center, rgba(255,40,40,0.98), rgba(220,20,20,0.9));
+  pointer-events: none;
+  z-index: 50;
+  transform: scale(0);
+  opacity: 0.95;
+  box-shadow: 0 0 120px rgba(255, 60, 60, 0.95), 0 0 40px rgba(255, 120, 120, 0.6) inset;
+  animation: cme-explode 900ms ease-out forwards;
+}
+
+@keyframes cme-explode {
+  0% {
+    transform: scale(0.1);
+    opacity: 0.98;
+  }
+  30% {
+    transform: scale(1.6);
+    opacity: 0.95;
+  }
+  60% {
+    transform: scale(3.8);
+    opacity: 0.7;
+  }
+  100% {
+    transform: scale(8);
+    opacity: 0;
+  }
+}
+
 /* Aurora Effects */
 .aurora {
   position: absolute;
@@ -694,6 +778,17 @@ body {
   );
   animation: aurora-dance 4s ease-in-out infinite;
   pointer-events: none;
+}
+
+/* Angry tint for scenes */
+.angry-tint::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 60, 60, 0.18);
+  pointer-events: none;
+  mix-blend-mode: overlay;
+  z-index: 9;
 }
 
 /* Completion Effects */
@@ -1402,18 +1497,52 @@ body {
 }
 
 /* Background Variations */
-.scene.space {
+.scene.solar.system {
   background-image: url("../Images/Backgrounds/Background1.png");
 }
-.scene.sun {
+.scene.space {
   background-image: url("../Images/Backgrounds/Background2.webp");
 }
-.scene.earth {
+.scene.ground {
+  background-image: url("../Images/Backgrounds/Background3.png");
+}
+.scene.ISS1 {
+  background-image: url("../Images/Backgrounds/Background1.png");
+}
+.scene.ISS2 {
+  background-image: url("../Images/Backgrounds/Background4.png");
+}
+.scene.shelter {
+  background-image: url("../Images/Backgrounds/shelter.png");
+}
+.scene.cockpit {
   background-image: url("../Images/Backgrounds/Background.png");
 }
-.scene.ground {
-  background-image: url("../Images/Backgrounds/grass_sky.png");
+.scene.tower {
+  background-image: url("../Images/Backgrounds/tower.png");
 }
+.scene.farmer {
+  background-image: url("../Images/Backgrounds/farmer.png");
+}
+.scene.tractor {
+  background-image: url("../Images/Backgrounds/tractor.png");
+}
+.scene.powergrid {
+  background-image: url("../Images/Backgrounds/powergrid.png");
+}
+.scene.flickering {
+  background-image: url("../Images/Backgrounds/flickering.png");
+}
+.scene.fisherman {
+  background-image: url("../Images/Backgrounds/fisherman.png");
+}
+.scene.gpsfisherman {
+  background-image: url("../Images/Backgrounds/gpsfisherman.png");
+}
+.scene.aurora {
+  background-image: url("../Images/Backgrounds/aurora.png");
+}
+
 
 /* About Modal Styles */
 .about-content {
