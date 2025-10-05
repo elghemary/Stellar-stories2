@@ -1,7 +1,7 @@
 // ===== STELLAR STORIES JAVASCRIPT =====
 
 let currentScene = 1;
-let totalScenes = 92; // will be overwritten on load to match actual .scene count
+let totalScenes = 35; // will be overwritten on load to match actual .scene count
 let isAutoPlaying = false;
 let autoPlayTimer = null;
 
@@ -12,7 +12,7 @@ let completedInteractions = new Set(); // Track which interactive elements have 
 const SCENE_POINTS = 1;
 const INTERACTION_POINTS = 10;
 
-// Audio mapping based on available files
+// Audio mapping based on actual files present in Audios/
 const audioMap = {
   1: "scene1.mp3",
   2: "scene2.mp3",
@@ -27,93 +27,23 @@ const audioMap = {
   11: "scene11.mp3",
   12: "scene12.mp3",
   13: "scene13.mp3",
-  14: "scene14.mp3",
-  15: "scene15.mp3",
-  16: "scene16.mp3",
-  17: "scene17.mp3",
   18: "scene18.mp3",
   19: "scene19.mp3",
-  20: "scene20.mp3",
-  21: "scene21.mp3",
-  22: "scene22.mp3",
-  23: "scene23.mp3",
-  24: "scene24.mp3",
-  25: "scene25.mp3",
-  26: "scene26.mp3",
-  27: "scene27.mp3",
-  28: "scene28.mp3",
-  29: "scene29.mp3",
-  30: "scene30.mp3",
-  31: "scene31.mp3",
-  32: "scene32.mp3",
-  33: "scene33.mp3",
-  34: "scene34.mp3",
-  35: "scene35.mp3",
-  36: "scene36.mp3",
+  20: "scene21.mp3",
+  21: "scene22.mp3",
+  25: "scene26.mp3",
+  26: "scene27.mp3",
+  27: "scene28.mp3",
+  28: "scene29.mp3",
+  29: "scene30.mp3",
+  30: "scene31.mp3",
+  31: "scene32.mp3",
+  32: "scene33.mp3",
+  33: "scene34.mp3",
+  34: "scene35.mp3",
+  35: "scene36.mp3",
   37: "scene37.mp3",
   38: "scene38.mp3",
-  39: "scene39.mp3",
-  40: "scene40.mp3",
-  41: "scene41.mp3",
-  42: "scene42.mp3",
-  43: "scene43.mp3",
-  44: "scene44.mp3",
-  45: "scene45.mp3",
-  46: "scene46.mp3",
-  47: "scene47.mp3",
-  48: "scene48.mp3",
-  49: "scene49.mp3",
-  50: "scene50.mp3",
-  51: "scene51.mp3",
-  52: "scene52.mp3",
-  53: "scene53.mp3",
-  54: "scene54.mp3",
-  55: "scene55.mp3",
-  56: "scene56.mp3",
-  57: "scene57.mp3",
-  58: "scene58.mp3",
-  59: "scene59.mp3",
-  60: "scene60.mp3",
-  61: "scene61.mp3",
-  62: "scene62.mp3",
-  63: "scene63.mp3",
-  64: "scene64.mp3",
-  65: "scene65.mp3",
-  66: "scene66.mp3",
-  67: "scene67.mp3",
-  68: "scene68.mp3",
-  69: "scene69.mp3",
-  70: "scene70.mp3",
-  71: "scene71.mp3",
-  72: "scene72.mp3",
-  73: "scene73.mp3",
-  74: "scene74.mp3",
-  75: "scene75.mp3",
-  76: "scene76.mp3",
-  77: "scene77.mp3",
-  78: "scene78.mp3",
-  79: "scene79.mp3",
-  80: "scene80.mp3",
-  81: "scene81.mp3",
-  82: "scene82.mp3",
-  83: "scene83.mp3",
-  84: "scene84.mp3",
-  85: "scene85.mp3",
-  86: "scene86.mp3",
-  87: "scene87.mp3",
-  88: "scene88.mp3",
-  89: "scene89.mp3",
-  90: "scene90.mp3",
-  91: "scene91.mp3",
-  92: "scene92.mp3",
-  93: "scene93.mp3",
-  94: "scene94.mp3",
-  95: "scene95.mp3",
-  96: "scene96.mp3",
-  97: "scene97.mp3",
-  98: "scene98.mp3",
-  99: "scene99.mp3",
-  100: "scene100.mp3",
 };
 
 
@@ -147,7 +77,20 @@ function startStory() {
   try {
     const scenes = document.querySelectorAll(".scene");
     if (scenes && scenes.length > 0) {
+      // Normalize data-scene attributes to DOM order so behavior is deterministic
+      scenes.forEach((s, idx) => {
+        try {
+          s.dataset.scene = String(idx + 1);
+        } catch (err) {
+          // ignore
+        }
+      });
+
       totalScenes = scenes.length;
+      // Do not auto-populate audioMap defaults here. We want audio to play only
+      // when an explicit mapping exists (in audioMap) or when the section sets
+      // a per-section `data-audio` attribute. This avoids accidental audio on
+      // slides that shouldn't play anything.
     }
   } catch (e) {
     // If DOM isn't ready for some reason, keep the existing totalScenes
@@ -295,17 +238,31 @@ function slideToScene(sceneNumber) {
 
   // Clear any existing scared-shake classes in the scenes container
   try {
+    // remove any per-element small shakes
     document.querySelectorAll(".scared-shake").forEach((el) =>
       el.classList.remove("scared-shake")
     );
 
-    // Add a small shaking animation to the character in scene 21 (21st slide)
+  // also remove any full-screen shake applied to the story-stage wrapper
+  const stage = document.getElementById('story-container') || document.querySelector('.story-stage');
+  if (stage && stage.classList) stage.classList.remove('screen-shake');
+
+    // Add a small shaking animation to characters for specific data-scene ids
     const scenes = document.querySelectorAll("#scenes-container .scene");
     const activeScene = scenes[sceneNumber - 1];
     if (activeScene) {
+      // Resolve the canonical scene id from data-scene if available
+      const canonicalId = activeScene.dataset && activeScene.dataset.scene ? parseInt(activeScene.dataset.scene, 10) : sceneNumber;
+
       const char = activeScene.querySelector(".character");
-      if (char && sceneNumber === 21) {
+      // Add small shake for scenes that should tremble (data-scene 21 and 9)
+      if (char && (canonicalId === 21 || canonicalId === 9)) {
         char.classList.add("scared-shake");
+      }
+
+      // For data-scene 9 we want the whole screen to tremble — add a screen-shake to the stage wrapper
+      if (canonicalId === 9 && stage && stage.classList) {
+        stage.classList.add('screen-shake');
       }
     }
   } catch (e) {
@@ -374,12 +331,53 @@ function playSceneAudio(sceneNumber) {
   if (!settings.audioEnabled) return;
 
   const audio = document.getElementById("scene-audio");
-  const audioFile = audioMap[sceneNumber];
 
-  if (audioFile) {
-    audio.src = `Audios/${audioFile}`;
+  // Try to resolve the scene's actual data-scene id from the DOM.
+  // The UI uses DOM order for slides, while some scenes set custom data-scene
+  // values. Use the active element's data-scene when available to pick audio.
+  let resolvedId = null;
+  try {
+    const scenes = document.querySelectorAll('#scenes-container .scene');
+    const idx = Number(sceneNumber) - 1;
+    var active = scenes && scenes[idx] ? scenes[idx] : null;
+    if (active && active.dataset && active.dataset.scene) {
+      const parsed = parseInt(active.dataset.scene, 10);
+      if (!isNaN(parsed)) resolvedId = parsed;
+    }
+  } catch (e) {
+    console.warn('Could not resolve data-scene id for audio mapping:', e);
+  }
+
+  // Determine which audio file to play. Priority:
+  // 1) explicit per-section `data-audio` (can be a filename or relative path)
+  // 2) audioMap lookup by resolved data-scene id (or DOM index)
+  // If neither exists, do not play any audio for this scene.
+  let chosenFile = null;
+  if (active && active.dataset && active.dataset.audio) {
+    chosenFile = active.dataset.audio; // use exactly what's provided
+  } else {
+    const lookupKey = resolvedId || Number(sceneNumber);
+    // Only use audioMap entry if it was explicitly set by the developer
+    if (Object.prototype.hasOwnProperty.call(audioMap, lookupKey)) {
+      chosenFile = audioMap[lookupKey];
+    } else {
+      // No explicit audio mapping — skip playing audio for this scene
+      return;
+    }
+  }
+
+  if (audio && chosenFile) {
+    try {
+      console.debug(`playSceneAudio: sceneNumber=${sceneNumber} resolvedId=${resolvedId} chosenFile=${chosenFile}`);
+    } catch (e) {}
+
+    // If chosenFile looks like a full path, use it; otherwise assume Audios/ folder
+    const src = chosenFile.includes('/') ? chosenFile : `Audios/${chosenFile}`;
+    audio.src = src;
     audio.volume = (settings.volume / 100) * 0.8;
-    audio.play().catch(console.log);
+    audio.play().catch((err) => {
+      console.warn(`Audio play failed for ${src}:`, err);
+    });
   }
 }
 
